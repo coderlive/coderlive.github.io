@@ -76,6 +76,93 @@
     
     
     
+    <article id="post-maven/maven" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/06/maven/maven/"
+    >maven引入log4j文件</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/06/maven/maven/" class="article-date">
+  <time datetime="2020-05-06T13:14:29.000Z" itemprop="datePublished">2020-05-06</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/maven/">maven</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>在maven中使用log4j时还需要引入下面的坐标</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;log4j&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;log4j&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.2.17&lt;&#x2F;version&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
+<h3>配置log4j</h3>
+Appender 为日志输出目的地，Log4j提供的appender有以下几种：
+org.apache.log4j.ConsoleAppender（控制台），
+org.apache.log4j.FileAppender（文件），
+org.apache.log4j.DailyRollingFileAppender（每天产生一个日志文件），
+org.apache.log4j.RollingFileAppender（文件大小到达指定尺寸的时候产生一个新的文件），
+org.apache.log4j.WriterAppender（将日志信息以流格式发送到任意指定的地方）
+
+<p>Layout：日志输出格式，Log4j提供的layout有以下几种：<br>org.apache.log4j.HTMLLayout（以HTML表格形式布局），<br>org.apache.log4j.PatternLayout（可以灵活地指定布局模式），<br>org.apache.log4j.SimpleLayout（包含日志信息的级别和信息字符串），<br>org.apache.log4j.TTCCLayout（包含日志产生的时间、线程、类别等等信息）</p>
+<p>打印参数: Log4J采用类似C语言中的printf函数的打印格式格式化日志信息，如下:<br>　　%m 输出代码中指定的消息<br>　　%p 输出优先级，即DEBUG，INFO，WARN，ERROR，FATAL<br>　　%r 输出自应用启动到输出该log信息耗费的毫秒数<br>　　%c 输出所属的类目，通常就是所在类的全名<br>　　%t 输出产生该日志事件的线程名<br>　　%n 输出一个回车换行符，Windows平台为“\r\n”，Unix平台为“\n”<br>　　%d 输出日志时间点的日期或时间，默认格式为ISO8601，也可以在其后指定格式，比如：%d{yyy MMM dd HH:mm:ss , SSS}，输出类似：2002年10月18日 22 ： 10 ： 28 ， 921<br>　　%l 输出日志事件的发生位置，包括类目名、发生的线程，以及在代码中的行数。举例：Testlog4.main(TestLog4.java: 10 )</p>
+<h4>log4j.properties</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">### set log levels ###</span><br><span class="line">log4j.rootLogger &#x3D; DEBUG,Console,File</span><br><span class="line">###  输出到控制台  ###</span><br><span class="line">log4j.appender.Console&#x3D;org.apache.log4j.ConsoleAppender</span><br><span class="line">log4j.appender.Console.Target&#x3D;System.out</span><br><span class="line">log4j.appender.Console.layout&#x3D;org.apache.log4j.PatternLayout</span><br><span class="line">log4j.appender.Console.layout.ConversionPattern&#x3D; %d&#123;ABSOLUTE&#125; %5p %c&#123;1&#125;:%L - %m%n</span><br><span class="line">### 输出到日志文件 ###</span><br><span class="line">log4j.appender.File&#x3D;org.apache.log4j.RollingFileAppender </span><br><span class="line">log4j.appender.File.File&#x3D;$&#123;project&#125;&#x2F;WEB-INF&#x2F;logs&#x2F;app.log</span><br><span class="line">log4j.appender.File.DatePattern&#x3D;_yyyyMMdd&#39;.log&#39;</span><br><span class="line">log4j.appender.File.MaxFileSize&#x3D;10MB</span><br><span class="line">log4j.appender.File.Threshold&#x3D;ALL</span><br><span class="line">log4j.appender.File.layout&#x3D;org.apache.log4j.PatternLayout</span><br><span class="line">log4j.appender.File.layout.ConversionPattern&#x3D;[%p][%d&#123;yyyy-MM-dd HH\:mm\:ss,SSS&#125;][%c]%m%n</span><br></pre></td></tr></table></figure>
+<h3>使用log4j</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">package com.xwx.text;</span><br><span class="line"></span><br><span class="line">import org.apache.log4j.Logger;</span><br><span class="line">import org.junit.Test;</span><br><span class="line"></span><br><span class="line">public class Test &#123;</span><br><span class="line">	</span><br><span class="line">	private static Logger log &#x3D; Logger.getLogger(Test.class.getClass());</span><br><span class="line">	@Test</span><br><span class="line">	public void testLog()&#123;</span><br><span class="line">		log.debug(&quot;debug&quot;);</span><br><span class="line">		log.error(&quot;error&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/maven/" rel="tag">maven</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
     <article id="post-html/index" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
