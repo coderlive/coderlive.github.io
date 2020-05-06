@@ -74,13 +74,21 @@
   </entry>
   
   <entry>
-    <title>/mybatis</title>
-    <link href="http://yoursite.com/2020/04/19/mybatis/index/"/>
-    <id>http://yoursite.com/2020/04/19/mybatis/index/</id>
+    <title>MyBatis运行流程</title>
+    <link href="http://yoursite.com/2020/04/19/mybatis/MyBatis%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B/"/>
+    <id>http://yoursite.com/2020/04/19/mybatis/MyBatis%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B/</id>
     <published>2020-04-19T02:21:48.000Z</published>
-    <updated>2020-04-19T02:26:23.554Z</updated>
+    <updated>2020-05-06T08:10:25.945Z</updated>
     
     <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;MyBatis的整个运行流程，也是紧紧围绕着数据库连接池配置文件MyBatisConfig.xml(一般按个人&lt;br&gt;喜好来命名，但规范命名比较好)，以及SQL映射配置文件Mapper.xml而开展的。&lt;br&gt;&amp;nbsp;&amp;n
+        
+      
     
     </summary>
     

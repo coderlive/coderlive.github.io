@@ -289,7 +289,7 @@
 
 </article>
     
-    <article id="post-mybatis/index" class="article article-type-post" itemscope
+    <article id="post-mybatis/MyBatis运行流程" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -297,8 +297,8 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/04/19/mybatis/index/"
-    >/mybatis</a> 
+  <a class="article-title" href="/2020/04/19/mybatis/MyBatis%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B/"
+    >MyBatis运行流程</a> 
 </h2>
  
 
@@ -307,7 +307,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/04/19/mybatis/index/" class="article-date">
+      <a href="/2020/04/19/mybatis/MyBatis%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B/" class="article-date">
   <time datetime="2020-04-19T02:21:48.000Z" itemprop="datePublished">2020-04-19</time>
 </a>
       
@@ -329,7 +329,8 @@
       
 
       
-      
+      <p>&nbsp;&nbsp;&nbsp;&nbsp;MyBatis的整个运行流程，也是紧紧围绕着数据库连接池配置文件MyBatisConfig.xml(一般按个人<br>喜好来命名，但规范命名比较好)，以及SQL映射配置文件Mapper.xml而开展的。<br>&nbsp;&nbsp;&nbsp;&nbsp;首先SqlSessionFactory会话工厂会通过Resources资源信息加载对象获取MyBatisConfig.xml配置<br>文件信息,然后生产可以与数据库进行交互会话实例类SqlSession。会话实例类SqlSession可以根据Mapper配置文件<br>中的SQL配置，去执行相应的增删改查操作。而在SQLSession类内部，是通过执行器Executor(分为基本执行器和缓存<br>执行器)对数据库进行操作的。执行器Executor与数据库交互，依靠的是底层封装对象Mappered Statement，它封装了<br>从Mapper文件中读取的信息（包括SQL语句、输入参数、输出结果类型）。通过执行器Executor与底层封装对象MapperedStatement的结合，MyBatis就实现了与数据库进行交互的功能。<br>  Mybatis运行流程结构如下图所示：</p>
+<img src="/2020/04/19/mybatis/MyBatis%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B/MyBatis%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B.png" class="" title="MyBatis运行流程">
       
       <!-- reward -->
       
