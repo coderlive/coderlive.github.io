@@ -102,6 +102,36 @@
   </entry>
   
   <entry>
+    <title>spring注解笔记</title>
+    <link href="http://yoursite.com/2020/04/19/spring/spring%E6%B3%A8%E8%A7%A3%E7%AC%94%E8%AE%B0/"/>
+    <id>http://yoursite.com/2020/04/19/spring/spring%E6%B3%A8%E8%A7%A3%E7%AC%94%E8%AE%B0/</id>
+    <published>2020-04-19T02:21:56.000Z</published>
+    <updated>2020-05-12T02:05:27.781Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2&gt;spring注解详解&lt;/h2&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;spring注解是用于注入数据的，它们的作用就和在xml配置文件下写一个property标签的作用是一样的,当引用注解时，我们的spring配置文件应该
+使用下面的头文件来使用;
+&lt;figur
+        
+      
+    
+    </summary>
+    
+    
+      <category term="spring" scheme="http://yoursite.com/categories/spring/"/>
+    
+    
+      <category term="spring" scheme="http://yoursite.com/tags/spring/"/>
+    
+  </entry>
+  
+  <entry>
     <title>MyBatis运行流程</title>
     <link href="http://yoursite.com/2020/04/19/mybatis/MyBatis%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B/"/>
     <id>http://yoursite.com/2020/04/19/mybatis/MyBatis%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B/</id>

@@ -166,4 +166,28 @@ org.apache.log4j.WriterAppender（将日志信息以流格式发送到任意指�
         <tag>mybatis</tag>
       </tags>
   </entry>
+  <entry>
+    <title>spring注解笔记</title>
+    <url>/2020/04/19/spring/spring%E6%B3%A8%E8%A7%A3%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h2>spring注解详解</h2>
+&nbsp;&nbsp;&nbsp;&nbsp;spring注解是用于注入数据的，它们的作用就和在xml配置文件下写一个property标签的作用是一样的,当引用注解时，我们的spring配置文件应该
+使用下面的头文件来使用;
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;beans xmlns&#x3D;&quot;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;beans&quot;</span><br><span class="line">       xmlns:xsi&#x3D;&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2001&#x2F;XMLSchema-instance&quot;</span><br><span class="line">       xmlns:context&#x3D;&quot;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;context&quot;</span><br><span class="line">       xsi:schemaLocation&#x3D;&quot;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;beans</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;beans&#x2F;spring-beans.xsd</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;context</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;context&#x2F;spring-context.xsd&quot;&gt;</span><br><span class="line">    &lt;context:component-scan base-package&#x3D;&quot;com.qin&quot;&gt;&lt;&#x2F;context:component-scan&gt;</span><br><span class="line">&lt;&#x2F;beans&gt;</span><br></pre></td></tr></table></figure>
+&nbsp;&nbsp;&nbsp;&nbsp;其中context:componet-san标签时扫描注解包的意思，当配置
+这个配置文件的时候，spring会自动去扫描这个包下所有的spring注解，读取这个类，把注解
+下的类加入到springioc容器中管理，而容器采用的是静态的Map<String,Object> beans来保存
+这些被注解的类。
+<h2>注解</h2>
+下面我将详细介绍部分注解的作用：
+
+<p> &nbsp;&nbsp;&nbsp;&nbsp;@Component:<br>                         作用：用于把当前类对象存入spring容器中<br>                          属性：<br>                          value：用于指定bean的id。当我们不写时，它的默认值是当前类名，且首字母改小写<br>                          @Controller：一般用在表现层<br>                          @Service：一般用在业务层<br>                          @Repository：一般用在持久层<br>                          以上三个注解他们的作用和属性与Component是一模一样<br>                          他们三个是spring框架为我们提供明确的三层使用的注解，使我们的三层对象更加清晰</p>
+<p> &nbsp;&nbsp;&nbsp;&nbsp;@Autowired:<br>                             作用：自动按照类型注入。只要容器中有唯一的一个bean对象类型和要注入的变量类型匹配，就可以注入成功<br>                                   如果ioc容器中没有任何bean的类型和要注入的变量类型匹配，则报错。<br>                                   如果Ioc容器中有多个类型匹配时：<br>                             出现位置：<br>                                 可以是变量上，也可以是方法上<br>                             细节：<br>                                 在使用注解注入时，set方法就不是必须的了。<br> &nbsp;&nbsp;&nbsp;&nbsp;用于改变作用范围的<br>                              他们的作用就和在bean标签中使用scope属性实现的功能是一样的<br>                              @Scope<br>                                  作用：用于指定bean的作用范围<br>                                  属性：<br>                                      value：指定范围的取值。常用取值：singleton prototype<br>                         和生命周期相关 (了解)<br>                              他们的作用就和在bean标签中使用init-method和destroy-methode的作用是一样的<br>                              @PreDestroy<br>                                  作用：用于指定销毁方法<br>                              @PostConstruct<br>                                  作用：用于指定初始化方法<br> &nbsp;&nbsp;&nbsp;&nbsp;@Qualifier:<br>                             作用：在按照类中注入的基础之上再按照名称注入。它在给类成员注入时不能单独使用。但是在给方法参数注入时可以（稍后我们讲）<br>                             属性：<br>                                 value：用于指定注入bean的id。<br>                         @Resource<br>                             作用：直接按照bean的id注入。它可以独立使用<br>                             属性：<br>                                 name：用于指定bean的id。<br>                         以上三个注入都只能注入其他bean类型的数据，而基本类型和String类型无法使用上述注解实现。<br>                         另外，集合类型的注入只能通过XML来实现。<br>                         @Value<br>                             作用：用于注入基本类型和String类型的数据<br>                             属性：<br>                                 value：用于指定数据的值。它可以使用spring中SpEL(也就是spring的el表达式）<br>                                         SpEL的写法：${表达式}</p>
+]]></content>
+      <categories>
+        <category>spring</category>
+      </categories>
+      <tags>
+        <tag>spring</tag>
+      </tags>
+  </entry>
 </search>
