@@ -132,6 +132,36 @@
   </entry>
   
   <entry>
+    <title>spring配置文件类注解</title>
+    <link href="http://yoursite.com/2020/04/19/spring/spring%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%B1%BB%E6%B3%A8%E8%A7%A3/"/>
+    <id>http://yoursite.com/2020/04/19/spring/spring%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%B1%BB%E6%B3%A8%E8%A7%A3/</id>
+    <published>2020-04-19T02:21:56.000Z</published>
+    <updated>2020-05-12T10:35:55.332Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2&gt;基于注解的配置文件&lt;/h2&gt;
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在spring中我们可以使用注解来代替配置文件，而具体的一个配置模板如下所示：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td
+        
+      
+    
+    </summary>
+    
+    
+      <category term="spring" scheme="http://yoursite.com/categories/spring/"/>
+    
+    
+      <category term="spring" scheme="http://yoursite.com/tags/spring/"/>
+    
+  </entry>
+  
+  <entry>
     <title>MyBatis运行流程</title>
     <link href="http://yoursite.com/2020/04/19/mybatis/MyBatis%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B/"/>
     <id>http://yoursite.com/2020/04/19/mybatis/MyBatis%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B/</id>

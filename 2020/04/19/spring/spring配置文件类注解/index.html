@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    MyBatis运行流程 |  浪客
+    spring配置文件类注解 |  浪客
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -42,7 +42,7 @@
   <div id="app">
     <main class="content on">
       <section class="outer">
-  <article id="post-mybatis/MyBatis运行流程" class="article article-type-post" itemscope
+  <article id="post-spring/spring配置文件类注解" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -50,7 +50,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  MyBatis运行流程
+  spring配置文件类注解
 </h1>
  
 
@@ -59,12 +59,12 @@
 
     
     <div class="article-meta">
-      <a href="/2020/04/19/mybatis/MyBatis%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B/" class="article-date">
-  <time datetime="2020-04-19T02:21:48.000Z" itemprop="datePublished">2020-04-19</time>
+      <a href="/2020/04/19/spring/spring%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%B1%BB%E6%B3%A8%E8%A7%A3/" class="article-date">
+  <time datetime="2020-04-19T02:21:56.000Z" itemprop="datePublished">2020-04-19</time>
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/mybatis/">mybatis</a>
+    <a class="article-category-link" href="/categories/spring/">spring</a>
   </div>
 
       
@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">274</span>
+            <span class="post-count">636</span>
         </span>
     </span>
 
@@ -83,7 +83,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">1 min</span>
+            <span class="post-count">2 min</span>
         </span>
     </span>
 </div>
@@ -94,6 +94,8 @@
 
     
     
+    <div class="tocbot"></div>
+
 
 
 
@@ -106,8 +108,24 @@
       
 
       
-      <p>&nbsp;&nbsp;&nbsp;&nbsp;MyBatis的整个运行流程，也是紧紧围绕着数据库连接池配置文件MyBatisConfig.xml(一般按个人<br>喜好来命名，但规范命名比较好)，以及SQL映射配置文件Mapper.xml而开展的。<br>&nbsp;&nbsp;&nbsp;&nbsp;首先SqlSessionFactory会话工厂会通过Resources资源信息加载对象获取MyBatisConfig.xml配置<br>文件信息,然后生产可以与数据库进行交互会话实例类SqlSession。会话实例类SqlSession可以根据Mapper配置文件<br>中的SQL配置，去执行相应的增删改查操作。而在SQLSession类内部，是通过执行器Executor(分为基本执行器和缓存<br>执行器)对数据库进行操作的。执行器Executor与数据库交互，依靠的是底层封装对象Mappered Statement，它封装了<br>从Mapper文件中读取的信息（包括SQL语句、输入参数、输出结果类型）。通过执行器Executor与底层封装对象MapperedStatement的结合，MyBatis就实现了与数据库进行交互的功能。<br>  Mybatis运行流程结构如下图所示：</p>
-<img src="/2020/04/19/mybatis/MyBatis%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B/MyBatis%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B.png" class="" title="MyBatis运行流程">
+      <h2>基于注解的配置文件</h2>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;在spring中我们可以使用注解来代替配置文件，而具体的一个配置模板如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">@ComponentScan(&quot;com.itheima&quot;)</span><br><span class="line">public class configuration &#123;</span><br><span class="line">    &#x2F;*</span><br><span class="line">    * @Bean相当于spring标签中的bean标签</span><br><span class="line">    * Bean标签不写value值是bean对象的id默认是方法的名字+小写</span><br><span class="line">    * @Scope相当于设置bean对象属于单例或者多例,这里表示多例对象的意思</span><br><span class="line">    * *&#x2F;</span><br><span class="line">    @Bean(&quot;runner&quot;)</span><br><span class="line">    @Scope(&quot;prototype&quot;)</span><br><span class="line">    public QueryRunner createRunner(DataSource ds)</span><br><span class="line">    &#123;</span><br><span class="line">        return new QueryRunner(ds);</span><br><span class="line">    &#125;</span><br><span class="line">    @Bean(&quot;dataSource&quot;)</span><br><span class="line">    public DataSource createDataSource()</span><br><span class="line">    &#123;</span><br><span class="line">        ComboPooledDataSource ds&#x3D;new ComboPooledDataSource();</span><br><span class="line">        try &#123;</span><br><span class="line">            ds.setDriverClass(&quot;com.mysql.jdbc.Driver&quot;);</span><br><span class="line">            ds.setJdbcUrl(&quot;jdbc:mysql:&#x2F;&#x2F;localhost:3306&#x2F;test&quot;);</span><br><span class="line">            ds.setUser(&quot;root&quot;);</span><br><span class="line">            ds.setPassword(&quot;&quot;);</span><br><span class="line">        &#125; catch (PropertyVetoException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        return ds;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2>配置类注解详解</h2>
+&nbsp;&nbsp;&nbsp;&nbsp;上面的代码只是简单的介绍了spring配置文件中的用法，这里将详细介绍:
+
+<p>@Configuration<br>作用： 用于指定当前类是一个spring配置类，当创建容器时会从该类上加载注解。获取容器时需要使用AnnotationApplicationContext(有@Configuration注解的类.class)。<br>属性： value:用于指定配置类的字节码</p>
+<p>@ComponentScan<br>作用： 用于指定spring在初始化容器时要扫描的包。作用和在spring的xml配置文件中的： &lt;context:component-scan base-package=”com.itheima”/&gt;是一样的。<br>属性： basePackages：用于指定要扫描的包。和该注解中的value属性作用一样。</p>
+<p>@Bean<br>作用： 该注解只能写在方法上，表明使用此方法创建一个对象，并且放入spring容器。<br>属性： name：给当前@Bean注解方法创建的对象指定一个名称(即bean的id）。</p>
+<p>@PropertySource<br>作用：用于加载.properties文件中的配置。例如我们配置数据源时，可以把连接数据库的信息写到properties配置文件中，就可以使用此注解指定properties配置文件的位置。<br>属性： value[]：用于指定properties文件位置。如果是在类路径下，需要写上classpath:</p>
+<p>@Import<br>作用： 用于导入其他配置类，在引入其他配置类时，可以不用再写@Configuration注解。当然，写上也没问题。<br>属性： value[]：用于指定其他配置类的字节码。</p>
+<h2>加载注解配置类</h2>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;当我们采用注解来开发时，通常需要使用下面的代码来加载注解通过注解获取容器： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ApplicationContext ac &#x3D; new AnnotationConfigApplicationContext(SpringConfiguration.class);</span><br><span class="line">&#x2F;&#x2F;SpringConfiguration.class表示被@Configuration注解的来，这样spring才可以识别得到</span><br></pre></td></tr></table></figure>
+
+
       
       <!-- reward -->
       
@@ -161,14 +179,14 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/04/19/mybatis/MyBatis%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/04/19/spring/spring%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%B1%BB%E6%B3%A8%E8%A7%A3/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mybatis/" rel="tag">mybatis</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/" rel="tag">spring</a></li></ul>
 
 
     </footer>
@@ -179,19 +197,19 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/04/19/spring/spring%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%B1%BB%E6%B3%A8%E8%A7%A3/" class="article-nav-link">
+      <a href="/2020/04/19/spring/spring%E6%B3%A8%E8%A7%A3%E7%AC%94%E8%AE%B0/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            spring配置文件类注解
+            spring注解笔记
           
         </div>
       </a>
     
     
-      <a href="/2020/04/19/mybatis/mybatis%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6/" class="article-nav-link">
+      <a href="/2020/04/19/mybatis/MyBatis%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">mybatis缓存机制</div>
+        <div class="article-nav-title">MyBatis运行流程</div>
       </a>
     
   </nav>
