@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-05-06T13:20:43.471Z</updated>
+  <updated>2020-05-13T07:59:24.277Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>java动态代理</title>
+    <link href="http://yoursite.com/2020/05/13/java/java%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/"/>
+    <id>http://yoursite.com/2020/05/13/java/java%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/</id>
+    <published>2020-05-13T07:35:43.000Z</published>
+    <updated>2020-05-13T07:59:24.277Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2&gt;java动态代理&lt;/h2&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;今天我学习到了java动态代理的用法，刚好为了加强记忆，我便做了一份笔记。
+&lt;img
+        
+      
+    
+    </summary>
+    
+    
+      <category term="java" scheme="http://yoursite.com/categories/java/"/>
+    
+    
+      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+    
+  </entry>
   
   <entry>
     <title>maven引入log4j文件</title>
