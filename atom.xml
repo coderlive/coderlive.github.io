@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-05-15T08:20:44.713Z</updated>
+  <updated>2020-05-15T14:02:37.665Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,17 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>spring基于xml的事务配置</title>
-    <link href="http://yoursite.com/2020/05/15/spring%E5%9F%BA%E4%BA%8Exml%E7%9A%84%E4%BA%8B%E5%8A%A1%E9%85%8D%E7%BD%AE/"/>
-    <id>http://yoursite.com/2020/05/15/spring%E5%9F%BA%E4%BA%8Exml%E7%9A%84%E4%BA%8B%E5%8A%A1%E9%85%8D%E7%BD%AE/</id>
-    <published>2020-05-15T08:20:44.000Z</published>
-    <updated>2020-05-15T08:20:44.713Z</updated>
+    <title>spring基于注解的事务</title>
+    <link href="http://yoursite.com/2020/05/15/spring/spring%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84%E4%BA%8B%E5%8A%A1/"/>
+    <id>http://yoursite.com/2020/05/15/spring/spring%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84%E4%BA%8B%E5%8A%A1/</id>
+    <published>2020-05-15T13:48:54.000Z</published>
+    <updated>2020-05-15T14:02:37.665Z</updated>
     
     <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2&gt;spring基于注解的事务&lt;/h2&gt;
+
+&lt;h4&gt;spring中基于注解的声明式事务控制配置步骤&lt;/h4&gt;
+
+&lt;p&gt;1.配置事务管理器&lt;/p&gt;
+&lt;p&gt;2.开启spring对注解事务的支持&lt;/p&gt;
+&lt;p&gt;3.在需要事务支持的地方使用@Transactional注解&lt;/p&gt;
+&lt;
+        
+      
     
     </summary>
     
     
+      <category term="spring" scheme="http://yoursite.com/categories/spring/"/>
+    
+    
+      <category term="spring" scheme="http://yoursite.com/tags/spring/"/>
     
   </entry>
   

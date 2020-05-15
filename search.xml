@@ -311,11 +311,6 @@ org.apache.log4j.WriterAppender（将日志信息以流格式发送到任意指�
   </entry>
   <entry>
     <title>spring基于xml的事务配置</title>
-    <url>/2020/05/15/spring%E5%9F%BA%E4%BA%8Exml%E7%9A%84%E4%BA%8B%E5%8A%A1%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>spring基于xml的事务配置</title>
     <url>/2020/05/15/spring/spring%E5%9F%BA%E4%BA%8Exml%E7%9A%84%E4%BA%8B%E5%8A%A1%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<h2>spring基于xml的事务配置</h2>
 
@@ -324,6 +319,24 @@ org.apache.log4j.WriterAppender（将日志信息以流格式发送到任意指�
 <p>2.配置事务的通知<br>            此时我们需要导入事务的约束，tx和aop的名称空间和约束<br>            使用tx:advice标签配置事务通知<br>                属性：<br>                    id:给事务通知起一个唯一标识<br>                    transaction-manager:给事务通知提供一个事务管理器引用<br>    <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;tx:advice id&#x3D;&quot;txAdvice&quot; transaction-manager&#x3D;&quot;transactionManager&quot;&gt;&lt;&#x2F;tx:advice&gt;</span><br></pre></td></tr></table></figure><br>3.配置AOP中的通用切入点表达式,建立事务通知和切入点表达式的对应关系在事务的通知tx:advice标签的内部,配置事务的属性</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!--配置事务的通知--&gt;</span><br><span class="line">&lt;tx:advice id&#x3D;&quot;txAdvice&quot; transaction-manager&#x3D;&quot;transactionManager&quot;&gt;</span><br><span class="line">    &lt;tx:attributes&gt;</span><br><span class="line">        &lt;!--</span><br><span class="line">        read-only&#x3D;用于指定事务是否只读，只有查询方法才能设置为true</span><br><span class="line">        propagation&#x3D;用于指定事务的传播行为。默认值使REQUIRED,表示一定会有事务，增删改的选择。查询方法可以选择SUPPORTS。</span><br><span class="line">        isolation&#x3D;用于指定事务的隔离级别。默认使DEFAULT，表示使用数据库的默认隔离级别</span><br><span class="line">        no-rollback-for&#x3D;用于指定一个异常，当产生该异常时，事务回滚，产生其他异常时。事务不回滚，没有默认值。不写时表示任何异常都回滚。</span><br><span class="line">        rollback-for&#x3D;用于指定一个异常，用于指定一个异常，当产生该异常时，事务回滚，产生其他异常时，事务不回滚，没有默认值。不写时表示任何异常都回滚</span><br><span class="line">        timeout&#x3D;用于指定事务的超时时间，默认值使-1表示永不超时，如果指定了数值，以秒为单位</span><br><span class="line">        --&gt;</span><br><span class="line">        &lt;tx:method name&#x3D;&quot;*&quot; propagation&#x3D;&quot;REQUIRED&quot; read-only&#x3D;&quot;true&quot; &#x2F;&gt;</span><br><span class="line">        &lt;tx:method name&#x3D;&quot;find*&quot; propagation&#x3D;&quot;SUPPORTS&quot; read-only&#x3D;&quot;false&quot;&gt;&lt;&#x2F;tx:method&gt;&lt;!--优先级大于上方--&gt;</span><br><span class="line">    &lt;&#x2F;tx:attributes&gt;</span><br><span class="line">&lt;&#x2F;tx:advice&gt;</span><br><span class="line">&lt;aop:config&gt;</span><br><span class="line">    &lt;aop:pointcut id&#x3D;&quot;pt1&quot; expression&#x3D;&quot;execution(* com.itheima.service.impl.AccountServiceImpl.*(..))&quot;&gt;&lt;&#x2F;aop:pointcut&gt;</span><br><span class="line">    &lt;aop:advisor advice-ref&#x3D;&quot;txAdvice&quot; pointcut-ref&#x3D;&quot;pt1&quot;&gt;&lt;&#x2F;aop:advisor&gt;</span><br><span class="line">&lt;&#x2F;aop:config&gt;</span><br></pre></td></tr></table></figure>
 ]]></content>
+      <categories>
+        <category>spring</category>
+      </categories>
+      <tags>
+        <tag>spring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>spring基于注解的事务</title>
+    <url>/2020/05/15/spring/spring%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84%E4%BA%8B%E5%8A%A1/</url>
+    <content><![CDATA[<h2>spring基于注解的事务</h2>
+
+<h4>spring中基于注解的声明式事务控制配置步骤</h4>
+
+<p>1.配置事务管理器</p>
+<p>2.开启spring对注解事务的支持</p>
+<p>3.在需要事务支持的地方使用@Transactional注解</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;总的操作在下面代码中</span><br><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;beans xmlns&#x3D;&quot;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;beans&quot;</span><br><span class="line">       xmlns:xsi&#x3D;&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2001&#x2F;XMLSchema-instance&quot;</span><br><span class="line">       xmlns:aop&#x3D;&quot;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;aop&quot;</span><br><span class="line">       xmlns:tx&#x3D;&quot;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;tx&quot;</span><br><span class="line">       xmlns:context&#x3D;&quot;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;context&quot;</span><br><span class="line">       xsi:schemaLocation&#x3D;&quot;</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;beans</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;beans&#x2F;spring-beans.xsd</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;tx</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;tx&#x2F;spring-tx.xsd</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;aop</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;aop&#x2F;spring-aop.xsd</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;context</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;context&#x2F;spring-context.xsd&quot;&gt;</span><br><span class="line">    &lt;context:component-scan base-package&#x3D;&quot;com.itheima&quot;&gt;&lt;&#x2F;context:component-scan&gt;</span><br><span class="line">    &lt;bean id&#x3D;&quot;transactionManager&quot;  class&#x3D;&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;</span><br><span class="line">        &lt;property name&#x3D;&quot;dataSource&quot; ref&#x3D;&quot;dataSource&quot;&gt;&lt;&#x2F;property&gt;</span><br><span class="line">    &lt;&#x2F;bean&gt;</span><br><span class="line">    &lt;tx:annotation-driven transaction-manager&#x3D;&quot;transactionManager&quot;&gt;&lt;&#x2F;tx:annotation-driven&gt;</span><br><span class="line">&lt;&#x2F;beans&gt;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>spring</category>
       </categories>
