@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    java动态代理 |  浪客
+    spring基于xml的事务配置 |  浪客
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -42,7 +42,7 @@
   <div id="app">
     <main class="content on">
       <section class="outer">
-  <article id="post-java/java动态代理" class="article article-type-post" itemscope
+  <article id="post-spring基于xml的事务配置" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -50,7 +50,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  java动态代理
+  spring基于xml的事务配置
 </h1>
  
 
@@ -59,14 +59,10 @@
 
     
     <div class="article-meta">
-      <a href="/2020/05/13/java/java%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/" class="article-date">
-  <time datetime="2020-05-13T07:35:43.000Z" itemprop="datePublished">2020-05-13</time>
+      <a href="/2020/05/15/spring%E5%9F%BA%E4%BA%8Exml%E7%9A%84%E4%BA%8B%E5%8A%A1%E9%85%8D%E7%BD%AE/" class="article-date">
+  <time datetime="2020-05-15T08:20:44.000Z" itemprop="datePublished">2020-05-15</time>
 </a>
       
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/java/">java</a>
-  </div>
-
       
       
 <div class="word_count">
@@ -74,7 +70,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">619</span>
+            <span class="post-count">0</span>
         </span>
     </span>
 
@@ -83,7 +79,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">2 min</span>
+            <span class="post-count">1 min</span>
         </span>
     </span>
 </div>
@@ -94,8 +90,6 @@
 
     
     
-    <div class="tocbot"></div>
-
 
 
 
@@ -108,41 +102,7 @@
       
 
       
-      <h2>java动态代理</h2>
-&nbsp;&nbsp;&nbsp;&nbsp;今天我学习到了java动态代理的用法，刚好为了加强记忆，我便做了一份笔记。
-<img src="/2020/05/13/java/java%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/%E4%BB%A3%E7%90%86.png" class="" title="java动态代理">
-&nbsp;&nbsp;&nbsp;&nbsp;由上面的图我们可以知道，在以前，我们买东西的时候都是直接去和产家联系的。然而，现在我们已经很少能够直接和产家
-联系了，都是由中间商来代理销售产品的，而中间商也相当于代理商。因为它代理了产家的产品，相应的产家有销售和售后功能，同样的，代理商也拥有
-产家的功能。首先我们需要一个产家接口
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public interface IProducter &#123;</span><br><span class="line">    void saleProduct(float money);</span><br><span class="line">    void afterService(float money);</span><br><span class="line">&#125;</span><br><span class="line">并且需要它的一个实现类</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;生产者</span><br><span class="line">public class producter implements IProducter&#123;</span><br><span class="line">    public void saleProduct(float money)</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(&quot;销售产品，并拿到&quot;+money);</span><br><span class="line">    &#125;</span><br><span class="line">    public void afterService(float money)</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(&quot;提供售后服务&quot;+money);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-然后我们用一个类来模拟消费者
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;模拟一个消费者</span><br><span class="line">public class Client &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        &#x2F;*</span><br><span class="line">            newProxyInstance方法的参数:</span><br><span class="line">                ClassLoader:类加载器</span><br><span class="line">                    它是用于加载代理对象字节码的。和被代理对象使用相同的类加载器。固定写法</span><br><span class="line">                Class[]:字节码数组</span><br><span class="line">                    它是用于加载代理对象字节码的。和被代理对象有相同方法。固定写法</span><br><span class="line">                InvocationHandler:用于增强的代码</span><br><span class="line">                    它是让我们写如何代理。我们一般都是写一个该接口的实现类，通常情况下都是匿名内部类，但不是必须的，</span><br><span class="line">                    此接口的实现类都是谁用谁写。</span><br><span class="line">          *&#x2F;</span><br><span class="line">        IProducter ip&#x3D; (IProducter) Proxy.newProxyInstance(IProducter.class.getClassLoader(), new Class[]&#123;IProducter.class&#125;, new InvocationHandler() &#123;</span><br><span class="line">            public Object invoke(Object proxy, Method method, Object[] args) throws Throwable &#123;</span><br><span class="line">                Float returanValue&#x3D; (Float) args[0];</span><br><span class="line">                if(&quot;saleProduct&quot;.equals(method.getName()))</span><br><span class="line">                returanValue &#x3D; (Float) method.invoke(new producter(),returanValue*0.8f);</span><br><span class="line">                return returanValue;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        ip.saleProduct(2000);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>接下类我们来对动态代理在做一个总结：</p>
-<h2>动态代理</h2>
-
-<pre><code>特点:字节码随用随创建，随用随加载
-
-作用:在不修改源码的基础上对方法增强
-
-分类：
-
-    基于接口的动态代理
-
-    基于子类的动态代理
-
-基于接口的动态代理
-
-    涉及的类：Proxy
-
-    提供者：JDK官方
-
-如何创建对象：
-
-    使用Proxy中的newProxyInstance()方法
-
-创建代理类最少实现一个接口，如果没有则不能使用</code></pre>
+      
       
       <!-- reward -->
       
@@ -196,15 +156,13 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/05/13/java/java%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/05/15/spring%E5%9F%BA%E4%BA%8Exml%E7%9A%84%E4%BA%8B%E5%8A%A1%E9%85%8D%E7%BD%AE/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li></ul>
-
 
     </footer>
 
@@ -214,19 +172,10 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/05/14/spring/springAOPxml%E9%85%8D%E7%BD%AE/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            springAOPxml配置
-          
-        </div>
-      </a>
     
-    
-      <a href="/2020/05/06/maven/maven/" class="article-nav-link">
+      <a href="/2020/05/15/spring/spring%E5%9F%BA%E4%BA%8Exml%E7%9A%84%E4%BA%8B%E5%8A%A1%E9%85%8D%E7%BD%AE/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">maven引入log4j文件</div>
+        <div class="article-nav-title">spring基于xml的事务配置</div>
       </a>
     
   </nav>
