@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-05-16T09:01:48.014Z</updated>
+  <updated>2020-05-16T13:51:14.189Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>springmvc解决中文乱码问题</title>
+    <link href="http://yoursite.com/2020/05/16/springmvc/springmvc%E8%A7%A3%E5%86%B3%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/"/>
+    <id>http://yoursite.com/2020/05/16/springmvc/springmvc%E8%A7%A3%E5%86%B3%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/</id>
+    <published>2020-05-16T13:46:15.000Z</published>
+    <updated>2020-05-16T13:51:14.189Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2&gt;springmvc解决中文乱码问题&lt;/h2&gt;
+
+&lt;p&gt;有时候我们在使用springmvc的时候会出现中文乱码的问题，这个时候我们就需要在web.xml中配置一个&lt;/p&gt;
+&lt;p&gt;springmvc的过滤器来解决中文乱码的问题&lt;/p&gt;
+&lt;figure
+        
+      
+    
+    </summary>
+    
+    
+      <category term="springmvc" scheme="http://yoursite.com/categories/springmvc/"/>
+    
+    
+      <category term="springmvc" scheme="http://yoursite.com/tags/springmvc/"/>
+    
+  </entry>
   
   <entry>
     <title>springmvc的基本使用配置</title>

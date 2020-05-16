@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    springmvc的基本使用配置 |  浪客
+    springmvc解决中文乱码问题 |  浪客
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -42,7 +42,7 @@
   <div id="app">
     <main class="content on">
       <section class="outer">
-  <article id="post-springmvc/springmvc的基本使用配置" class="article article-type-post" itemscope
+  <article id="post-springmvc/springmvc解决中文乱码问题" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -50,7 +50,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  springmvc的基本使用配置
+  springmvc解决中文乱码问题
 </h1>
  
 
@@ -59,8 +59,8 @@
 
     
     <div class="article-meta">
-      <a href="/2020/05/16/springmvc/springmvc%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E9%85%8D%E7%BD%AE/" class="article-date">
-  <time datetime="2020-05-16T08:51:50.000Z" itemprop="datePublished">2020-05-16</time>
+      <a href="/2020/05/16/springmvc/springmvc%E8%A7%A3%E5%86%B3%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/" class="article-date">
+  <time datetime="2020-05-16T13:46:15.000Z" itemprop="datePublished">2020-05-16</time>
 </a>
       
   <div class="article-category">
@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">629</span>
+            <span class="post-count">161</span>
         </span>
     </span>
 
@@ -83,7 +83,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">3 min</span>
+            <span class="post-count">1 min</span>
         </span>
     </span>
 </div>
@@ -108,11 +108,11 @@
       
 
       
-      <h2>springmvc的基本使用配置</h2>
-在简单的使用springmvc时我们需要进行一个简单的入门配置,首先我们需要在resource配置文件根目录下配置spring的基本配置文件，一般命名为springmvc.xml
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;beans xmlns&#x3D;&quot;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;beans&quot;</span><br><span class="line">       xmlns:mvc&#x3D;&quot;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;mvc&quot;</span><br><span class="line">       xmlns:context&#x3D;&quot;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;context&quot;</span><br><span class="line">       xmlns:xsi&#x3D;&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2001&#x2F;XMLSchema-instance&quot;</span><br><span class="line">       xsi:schemaLocation&#x3D;&quot;</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;beans</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;beans&#x2F;spring-beans.xsd</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;mvc</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;mvc&#x2F;spring-mvc.xsd</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;context</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;context&#x2F;spring-context.xsd&quot;&gt;</span><br><span class="line">        &lt;!--spring的配置，开启注解扫描,用来把springmvc的servlet放入容器中--&gt;</span><br><span class="line">        &lt;context:component-scan base-package&#x3D;&quot;cn.itcast&quot;&gt;&lt;&#x2F;context:component-scan&gt;</span><br><span class="line">        &lt;!--springmvc的视图解析器,用于将返回的字符串解析为要跳转的页面--&gt;</span><br><span class="line">        &lt;bean id&#x3D;&quot;viewResolver&quot; class&#x3D;&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;&gt;</span><br><span class="line">                &lt;property name&#x3D;&quot;prefix&quot; value&#x3D;&quot;&#x2F;WEB-INF&#x2F;pages&#x2F;&quot;&gt;&lt;&#x2F;property&gt;</span><br><span class="line">                &lt;property name&#x3D;&quot;suffix&quot; value&#x3D;&quot;.jsp&quot;&gt;&lt;&#x2F;property&gt;</span><br><span class="line">        &lt;&#x2F;bean&gt;</span><br><span class="line">        &lt;!--开启springmvc的框架注解支持--&gt;</span><br><span class="line">        &lt;!--使用&lt;mvc:annotation-driven&gt;标签会自动加载RequestMappingHandler(处理映射器)和--&gt;</span><br><span class="line">        &lt;!--RequestMappingHandlerAdapter(处理适配器),可用在springmvc.xml配置文件中使用这个标签来代替注解适配器和适配器的配置--&gt;</span><br><span class="line">        &lt;mvc:annotation-driven&gt;&lt;&#x2F;mvc:annotation-driven&gt;</span><br><span class="line">&lt;&#x2F;beans&gt;</span><br></pre></td></tr></table></figure>
-然后还需要在web.xml配置文件中加载DispatcherServlet和在其内部中使用init-parm引入springmvc配置文件
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE web-app PUBLIC</span><br><span class="line">        &quot;-&#x2F;&#x2F;Sun Microsystems, Inc.&#x2F;&#x2F;DTD Web Application 2.3&#x2F;&#x2F;EN&quot;</span><br><span class="line">        &quot;http:&#x2F;&#x2F;java.sun.com&#x2F;dtd&#x2F;web-app_2_3.dtd&quot; &gt;</span><br><span class="line">&lt;web-app&gt;</span><br><span class="line">  &lt;display-name&gt;Archetype Created Web Application&lt;&#x2F;display-name&gt;</span><br><span class="line">  &lt;servlet&gt;</span><br><span class="line">    &lt;servlet-name&gt;springmvc&lt;&#x2F;servlet-name&gt;</span><br><span class="line">    &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;&#x2F;servlet-class&gt;</span><br><span class="line">    &lt;init-param&gt;</span><br><span class="line">      &lt;param-name&gt;contextConfigLocation&lt;&#x2F;param-name&gt;</span><br><span class="line">      &lt;param-value&gt;classpath:springmvc.xml&lt;&#x2F;param-value&gt;</span><br><span class="line">    &lt;&#x2F;init-param&gt;</span><br><span class="line">    &lt;load-on-startup&gt;1&lt;&#x2F;load-on-startup&gt;</span><br><span class="line">  &lt;&#x2F;servlet&gt;</span><br><span class="line">  &lt;servlet-mapping&gt;</span><br><span class="line">    &lt;servlet-name&gt;springmvc&lt;&#x2F;servlet-name&gt;</span><br><span class="line">    &lt;url-pattern&gt;&#x2F;&lt;&#x2F;url-pattern&gt;</span><br><span class="line">  &lt;&#x2F;servlet-mapping&gt;</span><br><span class="line">&lt;&#x2F;web-app&gt;</span><br></pre></td></tr></table></figure>
+      <h2>springmvc解决中文乱码问题</h2>
+
+<p>有时候我们在使用springmvc的时候会出现中文乱码的问题，这个时候我们就需要在web.xml中配置一个</p>
+<p>springmvc的过滤器来解决中文乱码的问题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--配置过滤器--&gt;</span><br><span class="line">&lt;filter&gt;</span><br><span class="line">  &lt;filter-name&gt;encodingFilter&lt;&#x2F;filter-name&gt;</span><br><span class="line">  &lt;filter-class&gt;org.springframework.web.filter.CharacterEncodingFilter&lt;&#x2F;filter-class&gt;</span><br><span class="line">  &lt;init-param&gt;</span><br><span class="line">    &lt;param-name&gt;encoding&lt;&#x2F;param-name&gt;</span><br><span class="line">    &lt;param-value&gt;UTF-8&lt;&#x2F;param-value&gt;</span><br><span class="line">  &lt;&#x2F;init-param&gt;</span><br><span class="line">&lt;&#x2F;filter&gt;</span><br><span class="line">&lt;filter-mapping&gt;</span><br><span class="line">  &lt;filter-name&gt;encodingFilter&lt;&#x2F;filter-name&gt;</span><br><span class="line">  &lt;url-pattern&gt;&#x2F;*&lt;&#x2F;url-pattern&gt;</span><br><span class="line">&lt;&#x2F;filter-mapping&gt;</span><br></pre></td></tr></table></figure>
       
       <!-- reward -->
       
@@ -166,7 +166,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/05/16/springmvc/springmvc%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E9%85%8D%E7%BD%AE/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/05/16/springmvc/springmvc%E8%A7%A3%E5%86%B3%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -184,19 +184,10 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/05/16/springmvc/springmvc%E8%A7%A3%E5%86%B3%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            springmvc解决中文乱码问题
-          
-        </div>
-      </a>
     
-    
-      <a href="/2020/05/15/spring/spring%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84%E4%BA%8B%E5%8A%A1/" class="article-nav-link">
+      <a href="/2020/05/16/springmvc/springmvc%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E9%85%8D%E7%BD%AE/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">spring基于注解的事务</div>
+        <div class="article-nav-title">springmvc的基本使用配置</div>
       </a>
     
   </nav>

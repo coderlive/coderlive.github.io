@@ -359,4 +359,19 @@ org.apache.log4j.WriterAppender（将日志信息以流格式发送到任意指�
         <tag>springmvc</tag>
       </tags>
   </entry>
+  <entry>
+    <title>springmvc解决中文乱码问题</title>
+    <url>/2020/05/16/springmvc/springmvc%E8%A7%A3%E5%86%B3%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h2>springmvc解决中文乱码问题</h2>
+
+<p>有时候我们在使用springmvc的时候会出现中文乱码的问题，这个时候我们就需要在web.xml中配置一个</p>
+<p>springmvc的过滤器来解决中文乱码的问题</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!--配置过滤器--&gt;</span><br><span class="line">&lt;filter&gt;</span><br><span class="line">  &lt;filter-name&gt;encodingFilter&lt;&#x2F;filter-name&gt;</span><br><span class="line">  &lt;filter-class&gt;org.springframework.web.filter.CharacterEncodingFilter&lt;&#x2F;filter-class&gt;</span><br><span class="line">  &lt;init-param&gt;</span><br><span class="line">    &lt;param-name&gt;encoding&lt;&#x2F;param-name&gt;</span><br><span class="line">    &lt;param-value&gt;UTF-8&lt;&#x2F;param-value&gt;</span><br><span class="line">  &lt;&#x2F;init-param&gt;</span><br><span class="line">&lt;&#x2F;filter&gt;</span><br><span class="line">&lt;filter-mapping&gt;</span><br><span class="line">  &lt;filter-name&gt;encodingFilter&lt;&#x2F;filter-name&gt;</span><br><span class="line">  &lt;url-pattern&gt;&#x2F;*&lt;&#x2F;url-pattern&gt;</span><br><span class="line">&lt;&#x2F;filter-mapping&gt;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>springmvc</category>
+      </categories>
+      <tags>
+        <tag>springmvc</tag>
+      </tags>
+  </entry>
 </search>
