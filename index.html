@@ -76,6 +76,81 @@
     
     
     
+    <article id="post-springmvc/springmvc的基本使用配置" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/16/springmvc/springmvc%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E9%85%8D%E7%BD%AE/"
+    >springmvc的基本使用配置</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/16/springmvc/springmvc%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E9%85%8D%E7%BD%AE/" class="article-date">
+  <time datetime="2020-05-16T08:51:50.000Z" itemprop="datePublished">2020-05-16</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/springmvc/">springmvc</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h2>springmvc的基本使用配置</h2>
+在简单的使用springmvc时我们需要进行一个简单的入门配置,首先我们需要在resource配置文件根目录下配置spring的基本配置文件，一般命名为springmvc.xml
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;beans xmlns&#x3D;&quot;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;beans&quot;</span><br><span class="line">       xmlns:mvc&#x3D;&quot;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;mvc&quot;</span><br><span class="line">       xmlns:context&#x3D;&quot;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;context&quot;</span><br><span class="line">       xmlns:xsi&#x3D;&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2001&#x2F;XMLSchema-instance&quot;</span><br><span class="line">       xsi:schemaLocation&#x3D;&quot;</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;beans</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;beans&#x2F;spring-beans.xsd</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;mvc</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;mvc&#x2F;spring-mvc.xsd</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;context</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;context&#x2F;spring-context.xsd&quot;&gt;</span><br><span class="line">        &lt;!--spring的配置，开启注解扫描,用来把springmvc的servlet放入容器中--&gt;</span><br><span class="line">        &lt;context:component-scan base-package&#x3D;&quot;cn.itcast&quot;&gt;&lt;&#x2F;context:component-scan&gt;</span><br><span class="line">        &lt;!--springmvc的视图解析器,用于将返回的字符串解析为要跳转的页面--&gt;</span><br><span class="line">        &lt;bean id&#x3D;&quot;viewResolver&quot; class&#x3D;&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;&gt;</span><br><span class="line">                &lt;property name&#x3D;&quot;prefix&quot; value&#x3D;&quot;&#x2F;WEB-INF&#x2F;pages&#x2F;&quot;&gt;&lt;&#x2F;property&gt;</span><br><span class="line">                &lt;property name&#x3D;&quot;suffix&quot; value&#x3D;&quot;.jsp&quot;&gt;&lt;&#x2F;property&gt;</span><br><span class="line">        &lt;&#x2F;bean&gt;</span><br><span class="line">        &lt;!--开启springmvc的框架注解支持--&gt;</span><br><span class="line">        &lt;!--使用&lt;mvc:annotation-driven&gt;标签会自动加载RequestMappingHandler(处理映射器)和--&gt;</span><br><span class="line">        &lt;!--RequestMappingHandlerAdapter(处理适配器),可用在springmvc.xml配置文件中使用这个标签来代替注解适配器和适配器的配置--&gt;</span><br><span class="line">        &lt;mvc:annotation-driven&gt;&lt;&#x2F;mvc:annotation-driven&gt;</span><br><span class="line">&lt;&#x2F;beans&gt;</span><br></pre></td></tr></table></figure>
+然后还需要在web.xml配置文件中加载DispatcherServlet和在其内部中使用init-parm引入springmvc配置文件
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE web-app PUBLIC</span><br><span class="line">        &quot;-&#x2F;&#x2F;Sun Microsystems, Inc.&#x2F;&#x2F;DTD Web Application 2.3&#x2F;&#x2F;EN&quot;</span><br><span class="line">        &quot;http:&#x2F;&#x2F;java.sun.com&#x2F;dtd&#x2F;web-app_2_3.dtd&quot; &gt;</span><br><span class="line">&lt;web-app&gt;</span><br><span class="line">  &lt;display-name&gt;Archetype Created Web Application&lt;&#x2F;display-name&gt;</span><br><span class="line">  &lt;servlet&gt;</span><br><span class="line">    &lt;servlet-name&gt;springmvc&lt;&#x2F;servlet-name&gt;</span><br><span class="line">    &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;&#x2F;servlet-class&gt;</span><br><span class="line">    &lt;init-param&gt;</span><br><span class="line">      &lt;param-name&gt;contextConfigLocation&lt;&#x2F;param-name&gt;</span><br><span class="line">      &lt;param-value&gt;classpath:springmvc.xml&lt;&#x2F;param-value&gt;</span><br><span class="line">    &lt;&#x2F;init-param&gt;</span><br><span class="line">    &lt;load-on-startup&gt;1&lt;&#x2F;load-on-startup&gt;</span><br><span class="line">  &lt;&#x2F;servlet&gt;</span><br><span class="line">  &lt;servlet-mapping&gt;</span><br><span class="line">    &lt;servlet-name&gt;springmvc&lt;&#x2F;servlet-name&gt;</span><br><span class="line">    &lt;url-pattern&gt;&#x2F;&lt;&#x2F;url-pattern&gt;</span><br><span class="line">  &lt;&#x2F;servlet-mapping&gt;</span><br><span class="line">&lt;&#x2F;web-app&gt;</span><br></pre></td></tr></table></figure>
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/springmvc/" rel="tag">springmvc</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
     <article id="post-spring/spring基于注解的事务" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -795,94 +870,6 @@ org.apache.log4j.WriterAppender（将日志信息以流格式发送到任意指�
 
 <p> &nbsp;&nbsp;&nbsp;&nbsp;@Component:<br>                         作用：用于把当前类对象存入spring容器中<br>                          属性：<br>                          value：用于指定bean的id。当我们不写时，它的默认值是当前类名，且首字母改小写<br>                          @Controller：一般用在表现层<br>                          @Service：一般用在业务层<br>                          @Repository：一般用在持久层<br>                          以上三个注解他们的作用和属性与Component是一模一样<br>                          他们三个是spring框架为我们提供明确的三层使用的注解，使我们的三层对象更加清晰</p>
 <p> &nbsp;&nbsp;&nbsp;&nbsp;@Autowired:<br>                             作用：自动按照类型注入。只要容器中有唯一的一个bean对象类型和要注入的变量类型匹配，就可以注入成功<br>                                   如果ioc容器中没有任何bean的类型和要注入的变量类型匹配，则报错。<br>                                   如果Ioc容器中有多个类型匹配时：<br>                             出现位置：<br>                                 可以是变量上，也可以是方法上<br>                             细节：<br>                                 在使用注解注入时，set方法就不是必须的了。<br> &nbsp;&nbsp;&nbsp;&nbsp;用于改变作用范围的<br>                              他们的作用就和在bean标签中使用scope属性实现的功能是一样的<br>                              @Scope<br>                                  作用：用于指定bean的作用范围<br>                                  属性：<br>                                      value：指定范围的取值。常用取值：singleton prototype<br>                         和生命周期相关 (了解)<br>                              他们的作用就和在bean标签中使用init-method和destroy-methode的作用是一样的<br>                              @PreDestroy<br>                                  作用：用于指定销毁方法<br>                              @PostConstruct<br>                                  作用：用于指定初始化方法<br> &nbsp;&nbsp;&nbsp;&nbsp;@Qualifier:<br>                             作用：在按照类中注入的基础之上再按照名称注入。它在给类成员注入时不能单独使用。但是在给方法参数注入时可以（稍后我们讲）<br>                             属性：<br>                                 value：用于指定注入bean的id。<br>                         @Resource<br>                             作用：直接按照bean的id注入。它可以独立使用<br>                             属性：<br>                                 name：用于指定bean的id。<br>                         以上三个注入都只能注入其他bean类型的数据，而基本类型和String类型无法使用上述注解实现。<br>                         另外，集合类型的注入只能通过XML来实现。<br>                         @Value<br>                             作用：用于注入基本类型和String类型的数据<br>                             属性：<br>                                 value：用于指定数据的值。它可以使用spring中SpEL(也就是spring的el表达式）<br>                                         SpEL的写法：${表达式}</p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/" rel="tag">spring</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-spring/spring配置文件类注解" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/19/spring/spring%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%B1%BB%E6%B3%A8%E8%A7%A3/"
-    >spring配置文件类注解</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/04/19/spring/spring%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%B1%BB%E6%B3%A8%E8%A7%A3/" class="article-date">
-  <time datetime="2020-04-19T02:21:56.000Z" itemprop="datePublished">2020-04-19</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/spring/">spring</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h2>基于注解的配置文件</h2>
-
-<p>&nbsp;&nbsp;&nbsp;&nbsp;在spring中我们可以使用注解来代替配置文件，而具体的一个配置模板如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">@ComponentScan(&quot;com.itheima&quot;)</span><br><span class="line">public class configuration &#123;</span><br><span class="line">    &#x2F;*</span><br><span class="line">    * @Bean相当于spring标签中的bean标签</span><br><span class="line">    * Bean标签不写value值是bean对象的id默认是方法的名字+小写</span><br><span class="line">    * @Scope相当于设置bean对象属于单例或者多例,这里表示多例对象的意思</span><br><span class="line">    * *&#x2F;</span><br><span class="line">    @Bean(&quot;runner&quot;)</span><br><span class="line">    @Scope(&quot;prototype&quot;)</span><br><span class="line">    public QueryRunner createRunner(DataSource ds)</span><br><span class="line">    &#123;</span><br><span class="line">        return new QueryRunner(ds);</span><br><span class="line">    &#125;</span><br><span class="line">    @Bean(&quot;dataSource&quot;)</span><br><span class="line">    public DataSource createDataSource()</span><br><span class="line">    &#123;</span><br><span class="line">        ComboPooledDataSource ds&#x3D;new ComboPooledDataSource();</span><br><span class="line">        try &#123;</span><br><span class="line">            ds.setDriverClass(&quot;com.mysql.jdbc.Driver&quot;);</span><br><span class="line">            ds.setJdbcUrl(&quot;jdbc:mysql:&#x2F;&#x2F;localhost:3306&#x2F;test&quot;);</span><br><span class="line">            ds.setUser(&quot;root&quot;);</span><br><span class="line">            ds.setPassword(&quot;&quot;);</span><br><span class="line">        &#125; catch (PropertyVetoException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        return ds;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2>配置类注解详解</h2>
-&nbsp;&nbsp;&nbsp;&nbsp;上面的代码只是简单的介绍了spring配置文件中的用法，这里将详细介绍:
-
-<p>@Configuration<br>作用： 用于指定当前类是一个spring配置类，当创建容器时会从该类上加载注解。获取容器时需要使用AnnotationApplicationContext(有@Configuration注解的类.class)。<br>属性： value:用于指定配置类的字节码</p>
-<p>@ComponentScan<br>作用： 用于指定spring在初始化容器时要扫描的包。作用和在spring的xml配置文件中的： &lt;context:component-scan base-package=”com.itheima”/&gt;是一样的。<br>属性： basePackages：用于指定要扫描的包。和该注解中的value属性作用一样。</p>
-<p>@Bean<br>作用： 该注解只能写在方法上，表明使用此方法创建一个对象，并且放入spring容器。<br>属性： name：给当前@Bean注解方法创建的对象指定一个名称(即bean的id）。</p>
-<p>@PropertySource<br>作用：用于加载.properties文件中的配置。例如我们配置数据源时，可以把连接数据库的信息写到properties配置文件中，就可以使用此注解指定properties配置文件的位置。<br>属性： value[]：用于指定properties文件位置。如果是在类路径下，需要写上classpath:</p>
-<p>@Import<br>作用： 用于导入其他配置类，在引入其他配置类时，可以不用再写@Configuration注解。当然，写上也没问题。<br>属性： value[]：用于指定其他配置类的字节码。</p>
-<h2>加载注解配置类</h2>
-
-<p>&nbsp;&nbsp;&nbsp;&nbsp;当我们采用注解来开发时，通常需要使用下面的代码来加载注解通过注解获取容器： </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ApplicationContext ac &#x3D; new AnnotationConfigApplicationContext(SpringConfiguration.class);</span><br><span class="line">&#x2F;&#x2F;SpringConfiguration.class表示被@Configuration注解的来，这样spring才可以识别得到</span><br></pre></td></tr></table></figure>
-
 
       
       <!-- reward -->

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-05-15T14:02:37.665Z</updated>
+  <updated>2020-05-16T09:01:48.014Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>springmvc的基本使用配置</title>
+    <link href="http://yoursite.com/2020/05/16/springmvc/springmvc%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E9%85%8D%E7%BD%AE/"/>
+    <id>http://yoursite.com/2020/05/16/springmvc/springmvc%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E9%85%8D%E7%BD%AE/</id>
+    <published>2020-05-16T08:51:50.000Z</published>
+    <updated>2020-05-16T09:01:48.014Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2&gt;springmvc的基本使用配置&lt;/h2&gt;
+在简单的使用springmvc时我们需要进行一个简单的入门配置,首先我们需要在resource配置文件根目录下配置spring的基本配置文件，一般命名为springmvc.xml
+&lt;figure
+        
+      
+    
+    </summary>
+    
+    
+      <category term="springmvc" scheme="http://yoursite.com/categories/springmvc/"/>
+    
+    
+      <category term="springmvc" scheme="http://yoursite.com/tags/springmvc/"/>
+    
+  </entry>
   
   <entry>
     <title>spring基于注解的事务</title>
