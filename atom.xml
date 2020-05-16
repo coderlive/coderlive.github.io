@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-05-16T13:51:14.189Z</updated>
+  <updated>2020-05-16T14:40:09.197Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>springmvc自定义类型转换器</title>
+    <link href="http://yoursite.com/2020/05/16/springmvc/springmvc%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E5%99%A8/"/>
+    <id>http://yoursite.com/2020/05/16/springmvc/springmvc%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E5%99%A8/</id>
+    <published>2020-05-16T14:34:20.000Z</published>
+    <updated>2020-05-16T14:40:09.197Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2&gt;springmvc自定义类型转换器&lt;/h2&gt;
+
+&lt;p&gt;在springmvc的编程过程中，有时候我们在绑定一个日期的参数时不太符合我们的要求，这时候我们就需要自定义一个&lt;br&gt;类型转换器来转换时间的格式，并在springmvc的配置文件中引用它。在使用自定义的转换器时，我们
+        
+      
+    
+    </summary>
+    
+    
+      <category term="springmvc" scheme="http://yoursite.com/categories/springmvc/"/>
+    
+    
+      <category term="springmvc" scheme="http://yoursite.com/tags/springmvc/"/>
+    
+  </entry>
   
   <entry>
     <title>springmvc解决中文乱码问题</title>
