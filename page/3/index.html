@@ -76,6 +76,82 @@
     
     
     
+    <article id="post-java/java陷阱之重写私有方法" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/04/19/java/java%E9%99%B7%E9%98%B1%E4%B9%8B%E9%87%8D%E5%86%99%E7%A7%81%E6%9C%89%E6%96%B9%E6%B3%95/"
+    >java陷阱之重写私有方法</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/04/19/java/java%E9%99%B7%E9%98%B1%E4%B9%8B%E9%87%8D%E5%86%99%E7%A7%81%E6%9C%89%E6%96%B9%E6%B3%95/" class="article-date">
+  <time datetime="2020-04-19T02:02:41.000Z" itemprop="datePublished">2020-04-19</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>当我们有时候写JAVA代码的时候可能会天真的使用下面的写法，<br>你会发现你所写的方法是错误的:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">package polymorphism;</span><br><span class="line"></span><br><span class="line">public class PrivateOverride &#123;</span><br><span class="line">    private void f() &#123;</span><br><span class="line">        System.out.println(&quot;private f()&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        PrivateOverride po &#x3D; new Derived();</span><br><span class="line">        po.f();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public Derived extends PrivateOverride &#123;</span><br><span class="line">    public void f() &#123;</span><br><span class="line">        System.out.println(&quot;public f()&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">private f()</span><br></pre></td></tr></table></figure>
+<p>你可能期望输出是 public f()，然而 private 方法可以当作是 final 的，<br>对于派生类来说是隐蔽的。因此，这里 Derived 的 f() 是一个全新的方法；<br>因为基类版本的 f() 屏蔽了 Derived ，因此它都不算是重写方法。</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
     <article id="post-hello-world" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
