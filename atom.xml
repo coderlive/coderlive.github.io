@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-05-17T01:29:51.710Z</updated>
+  <updated>2020-05-17T07:11:04.038Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>springmvc配置不拦截静态资源</title>
+    <link href="http://yoursite.com/2020/05/17/springmvc/springmvc%E9%85%8D%E7%BD%AE%E4%B8%8D%E6%8B%A6%E6%88%AA%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90/"/>
+    <id>http://yoursite.com/2020/05/17/springmvc/springmvc%E9%85%8D%E7%BD%AE%E4%B8%8D%E6%8B%A6%E6%88%AA%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90/</id>
+    <published>2020-05-17T07:07:42.000Z</published>
+    <updated>2020-05-17T07:11:04.038Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;DispatcherServlet会拦截到所有的资源，导致一个问题就是静态资源（img、css、js）也会被拦截到，从而&lt;br&gt;不能被使用。解决问题就是需要配置静态资源不进行拦截，在springmvc.xml配置文件添加如下配置&lt;br&gt;1.mvc:resources标签配置
+        
+      
+    
+    </summary>
+    
+    
+      <category term="springmvc" scheme="http://yoursite.com/categories/springmvc/"/>
+    
+    
+      <category term="springmvc" scheme="http://yoursite.com/tags/springmvc/"/>
+    
+  </entry>
   
   <entry>
     <title>springmvc注解</title>
@@ -518,29 +545,6 @@
     
     
       <category term="java" scheme="http://yoursite.com/tags/java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://yoursite.com/2020/04/18/hello-world/"/>
-    <id>http://yoursite.com/2020/04/18/hello-world/</id>
-    <published>2020-04-18T02:50:33.481Z</published>
-    <updated>2020-04-18T02:50:33.482Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a
-        
-      
-    
-    </summary>
-    
-    
     
   </entry>
   

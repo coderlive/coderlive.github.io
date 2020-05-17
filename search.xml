@@ -407,4 +407,17 @@ org.apache.log4j.WriterAppender（将日志信息以流格式发送到任意指�
         <tag>springmvc</tag>
       </tags>
   </entry>
+  <entry>
+    <title>springmvc配置不拦截静态资源</title>
+    <url>/2020/05/17/springmvc/springmvc%E9%85%8D%E7%BD%AE%E4%B8%8D%E6%8B%A6%E6%88%AA%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90/</url>
+    <content><![CDATA[<p>DispatcherServlet会拦截到所有的资源，导致一个问题就是静态资源（img、css、js）也会被拦截到，从而<br>不能被使用。解决问题就是需要配置静态资源不进行拦截，在springmvc.xml配置文件添加如下配置<br>1.mvc:resources标签配置不过滤<br>2.location元素表示webapp目录下的包下的所有文件<br>3.mapping元素表示以/static开头的所有请求路径，如/static/a 或者/static/a/b</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!-- 设置静态资源不过滤 --&gt;</span><br><span class="line">&lt;mvc:resources location&#x3D;&quot;&#x2F;css&#x2F;&quot; mapping&#x3D;&quot;&#x2F;css&#x2F;**&quot;&#x2F;&gt; &lt;!-- 样式 --&gt;</span><br><span class="line">&lt;mvc:resources location&#x3D;&quot;&#x2F;images&#x2F;&quot; mapping&#x3D;&quot;&#x2F;images&#x2F;**&quot;&#x2F;&gt; &lt;!-- 图片 --&gt;</span><br><span class="line">&lt;mvc:resources location&#x3D;&quot;&#x2F;js&#x2F;&quot; mapping&#x3D;&quot;&#x2F;js&#x2F;**&quot;&#x2F;&gt; &lt;!-- javascript --&gt;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>springmvc</category>
+      </categories>
+      <tags>
+        <tag>springmvc</tag>
+      </tags>
+  </entry>
 </search>
