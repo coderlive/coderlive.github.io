@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-05-18T00:57:11.013Z</updated>
+  <updated>2020-05-18T07:15:34.148Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>springmvc异常处理器</title>
+    <link href="http://yoursite.com/2020/05/18/springmvc/springmvc%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E5%99%A8/"/>
+    <id>http://yoursite.com/2020/05/18/springmvc/springmvc%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E5%99%A8/</id>
+    <published>2020-05-18T07:07:51.000Z</published>
+    <updated>2020-05-18T07:15:34.148Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;有的时候我们再前端的页面在访问页面时会报404错误，这样这错误对用户时及其不友好的，这时候我们需要自定义一个异常处理器来让页面跳转到一个友好的界面，提高用户的体验感。&lt;br&gt;首先，为了抛出异常，我们需要自定义一个异常来保存一些信息，当抛出异常的时候我们可以根据异常来提取信息
+        
+      
+    
+    </summary>
+    
+    
+      <category term="springmvc" scheme="http://yoursite.com/categories/springmvc/"/>
+    
+    
+      <category term="springmvc" scheme="http://yoursite.com/tags/springmvc/"/>
+    
+  </entry>
   
   <entry>
     <title>springmvc之文件上传</title>
@@ -535,25 +562,6 @@
     
     
       <category term="mybatis" scheme="http://yoursite.com/tags/mybatis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>/springmvc</title>
-    <link href="http://yoursite.com/2020/04/19/springmvc/index/"/>
-    <id>http://yoursite.com/2020/04/19/springmvc/index/</id>
-    <published>2020-04-19T02:21:39.000Z</published>
-    <updated>2020-04-19T02:26:53.459Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-      <category term="springmvc" scheme="http://yoursite.com/categories/springmvc/"/>
-    
-    
-      <category term="springmvc" scheme="http://yoursite.com/tags/springmvc/"/>
     
   </entry>
   
