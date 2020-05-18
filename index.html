@@ -76,6 +76,89 @@
     
     
     
+    <article id="post-springmvc/springmvc之文件上传" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/17/springmvc/springmvc%E4%B9%8B%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"
+    >springmvc之文件上传</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/17/springmvc/springmvc%E4%B9%8B%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" class="article-date">
+  <time datetime="2020-05-17T08:49:12.000Z" itemprop="datePublished">2020-05-17</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/springmvc/">springmvc</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>传统的方式需要修改以下表单的提交格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action&#x3D;&quot;&#x2F;user&#x2F;fileUpload1&quot; method&#x3D;&quot;post&quot; enctype&#x3D;&quot;multipart&#x2F;form-data&quot;&gt;</span><br><span class="line">        选择文件:&lt;input type&#x3D;&quot;file&quot; name&#x3D;&quot;upload&quot;&gt;</span><br><span class="line">        &lt;input type&#x3D;&quot;submit&quot; value&#x3D;&quot;上传文件&quot;&gt;</span><br><span class="line">&lt;&#x2F;form&gt;</span><br></pre></td></tr></table></figure>
+<p>还要导一下响应的依赖包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> &lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;commons-fileupload&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;commons-fileupload&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.4&lt;&#x2F;version&gt;</span><br><span class="line">  &lt;&#x2F;dependency&gt;</span><br><span class="line">  &lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;commons-io&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;commons-io&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;2.6&lt;&#x2F;version&gt;</span><br><span class="line">  &lt;&#x2F;dependency&gt;</span><br><span class="line">&lt;&#x2F;dependencies&gt;</span><br></pre></td></tr></table></figure>
+<p>然后再服务器端需要这样写</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">@Controller</span><br><span class="line">@RequestMapping(&quot;user&quot;)</span><br><span class="line">public class UserController &#123;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(&quot;fileUpload1&quot;)</span><br><span class="line">    public String fileUpload1(HttpServletRequest request) throws Exception &#123;</span><br><span class="line">        System.out.println(&quot;文件输出&quot;);</span><br><span class="line">        String path&#x3D;request.getSession().getServletContext().getRealPath(&quot;&#x2F;uploads&#x2F;&quot;);</span><br><span class="line">        File file&#x3D;new File(path);</span><br><span class="line">        if(!file.exists())</span><br><span class="line">        &#123;</span><br><span class="line">            file.mkdir();</span><br><span class="line">        &#125;</span><br><span class="line">        DiskFileItemFactory factory&#x3D;new DiskFileItemFactory();</span><br><span class="line">        ServletFileUpload upload&#x3D;new ServletFileUpload(factory);</span><br><span class="line">        List&lt;FileItem&gt; list&#x3D;upload.parseRequest(request);</span><br><span class="line">        for (FileItem item:list)</span><br><span class="line">        &#123;</span><br><span class="line">            &#x2F;&#x2F;判断当前对象是否是一个上传表单项</span><br><span class="line">            if (item.isFormField())</span><br><span class="line">            &#123;</span><br><span class="line">                &#x2F;&#x2F;说明表单项</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                &#x2F;&#x2F;说明上传的是文件项目</span><br><span class="line">                &#x2F;&#x2F;获取到上传文件的名称</span><br><span class="line">                String FileName&#x3D;item.getName();</span><br><span class="line">                String uuid&#x3D;UUID.randomUUID().toString().replace(&quot;-&quot;,&quot;&quot;);</span><br><span class="line">                &#x2F;&#x2F;写入服务器端</span><br><span class="line">                item.write(new File(path,uuid+&quot;_&quot;+FileName));</span><br><span class="line">                &#x2F;&#x2F;删除临时文件</span><br><span class="line">                item.delete();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(path);</span><br><span class="line">        return &quot;success&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>由于解析文件稍微有些麻烦，所以我决定用springmvc的文件解析器来处理文件的上传方式<br>这个是文件解析器的原理</p>
+<img src="/2020/05/17/springmvc/springmvc%E4%B9%8B%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90%E5%99%A8%E5%8E%9F%E7%90%86.bmp" class="" title="springmvc之文件上传">
+<p>首先我们需要引入一个配置文件,注意：配置文件bean的id是固定的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id&#x3D;&quot;multipartResolver&quot; class&#x3D;&quot;org.springframework.web.multipart.commons.CommonsMultipartResolver&quot;&gt;</span><br><span class="line">                &lt;!--配置最大上传的文件大小--&gt;</span><br><span class="line">                &lt;property name&#x3D;&quot;maxUploadSize&quot; value&#x3D;&quot;10485670&quot;&gt;&lt;&#x2F;property&gt;</span><br><span class="line">        &lt;&#x2F;bean&gt;</span><br></pre></td></tr></table></figure>
+<p>然后再Controller类的下面写处理,使用MultipartFile来加载文件类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">@Controller</span><br><span class="line">@RequestMapping(&quot;user&quot;)</span><br><span class="line">public class UserController &#123;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(&quot;fileUpload1&quot;)</span><br><span class="line">    public String fileUpload1(HttpServletRequest request, MultipartFile upload) throws Exception &#123;</span><br><span class="line">        System.out.println(&quot;文件输出&quot;);</span><br><span class="line">        String path &#x3D; request.getSession().getServletContext().getRealPath(&quot;&#x2F;uploads&#x2F;&quot;);</span><br><span class="line">        File file &#x3D; new File(path);</span><br><span class="line">        if (!file.exists()) &#123;</span><br><span class="line">            file.mkdir();</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F;说明上传的是文件项目</span><br><span class="line">        &#x2F;&#x2F;获取到上传文件的传统名称，即原来的名字</span><br><span class="line">        String FileName &#x3D; upload.getOriginalFilename();</span><br><span class="line">        String uuid &#x3D; UUID.randomUUID().toString().replace(&quot;-&quot;, &quot;&quot;);</span><br><span class="line">        &#x2F;&#x2F;写入服务器端</span><br><span class="line">        upload.transferTo(new File(path, uuid + &quot;_&quot; + FileName));</span><br><span class="line">        return &quot;success&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/springmvc/" rel="tag">springmvc</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
     <article id="post-springmvc/springmvc之JSON数据前后端转换" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -772,111 +855,6 @@
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/" rel="tag">spring</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-java/java动态代理" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/05/13/java/java%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/"
-    >java动态代理</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/05/13/java/java%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/" class="article-date">
-  <time datetime="2020-05-13T07:35:43.000Z" itemprop="datePublished">2020-05-13</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/java/">java</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h2>java动态代理</h2>
-&nbsp;&nbsp;&nbsp;&nbsp;今天我学习到了java动态代理的用法，刚好为了加强记忆，我便做了一份笔记。
-<img src="/2020/05/13/java/java%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/%E4%BB%A3%E7%90%86.png" class="" title="java动态代理">
-&nbsp;&nbsp;&nbsp;&nbsp;由上面的图我们可以知道，在以前，我们买东西的时候都是直接去和产家联系的。然而，现在我们已经很少能够直接和产家
-联系了，都是由中间商来代理销售产品的，而中间商也相当于代理商。因为它代理了产家的产品，相应的产家有销售和售后功能，同样的，代理商也拥有
-产家的功能。首先我们需要一个产家接口
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public interface IProducter &#123;</span><br><span class="line">    void saleProduct(float money);</span><br><span class="line">    void afterService(float money);</span><br><span class="line">&#125;</span><br><span class="line">并且需要它的一个实现类</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;生产者</span><br><span class="line">public class producter implements IProducter&#123;</span><br><span class="line">    public void saleProduct(float money)</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(&quot;销售产品，并拿到&quot;+money);</span><br><span class="line">    &#125;</span><br><span class="line">    public void afterService(float money)</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(&quot;提供售后服务&quot;+money);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-然后我们用一个类来模拟消费者
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;模拟一个消费者</span><br><span class="line">public class Client &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        &#x2F;*</span><br><span class="line">            newProxyInstance方法的参数:</span><br><span class="line">                ClassLoader:类加载器</span><br><span class="line">                    它是用于加载代理对象字节码的。和被代理对象使用相同的类加载器。固定写法</span><br><span class="line">                Class[]:字节码数组</span><br><span class="line">                    它是用于加载代理对象字节码的。和被代理对象有相同方法。固定写法</span><br><span class="line">                InvocationHandler:用于增强的代码</span><br><span class="line">                    它是让我们写如何代理。我们一般都是写一个该接口的实现类，通常情况下都是匿名内部类，但不是必须的，</span><br><span class="line">                    此接口的实现类都是谁用谁写。</span><br><span class="line">          *&#x2F;</span><br><span class="line">        IProducter ip&#x3D; (IProducter) Proxy.newProxyInstance(IProducter.class.getClassLoader(), new Class[]&#123;IProducter.class&#125;, new InvocationHandler() &#123;</span><br><span class="line">            public Object invoke(Object proxy, Method method, Object[] args) throws Throwable &#123;</span><br><span class="line">                Float returanValue&#x3D; (Float) args[0];</span><br><span class="line">                if(&quot;saleProduct&quot;.equals(method.getName()))</span><br><span class="line">                returanValue &#x3D; (Float) method.invoke(new producter(),returanValue*0.8f);</span><br><span class="line">                return returanValue;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        ip.saleProduct(2000);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>接下类我们来对动态代理在做一个总结：</p>
-<h2>动态代理</h2>
-
-<pre><code>特点:字节码随用随创建，随用随加载
-
-作用:在不修改源码的基础上对方法增强
-
-分类：
-
-    基于接口的动态代理
-
-    基于子类的动态代理
-
-基于接口的动态代理
-
-    涉及的类：Proxy
-
-    提供者：JDK官方
-
-如何创建对象：
-
-    使用Proxy中的newProxyInstance()方法
-
-创建代理类最少实现一个接口，如果没有则不能使用</code></pre>
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li></ul>
 
 
     </footer>

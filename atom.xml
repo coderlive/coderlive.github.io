@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-05-17T08:28:26.425Z</updated>
+  <updated>2020-05-18T00:57:11.013Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>springmvc之文件上传</title>
+    <link href="http://yoursite.com/2020/05/17/springmvc/springmvc%E4%B9%8B%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
+    <id>http://yoursite.com/2020/05/17/springmvc/springmvc%E4%B9%8B%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</id>
+    <published>2020-05-17T08:49:12.000Z</published>
+    <updated>2020-05-18T00:57:11.013Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;传统的方式需要修改以下表单的提交格式&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span
+        
+      
+    
+    </summary>
+    
+    
+      <category term="springmvc" scheme="http://yoursite.com/categories/springmvc/"/>
+    
+    
+      <category term="springmvc" scheme="http://yoursite.com/tags/springmvc/"/>
+    
+  </entry>
   
   <entry>
     <title>springmvc值JSON数据前后端转换</title>
@@ -526,25 +554,6 @@
     
     
       <category term="springmvc" scheme="http://yoursite.com/tags/springmvc/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>/go</title>
-    <link href="http://yoursite.com/2020/04/19/go/index/"/>
-    <id>http://yoursite.com/2020/04/19/go/index/</id>
-    <published>2020-04-19T02:21:14.000Z</published>
-    <updated>2020-04-19T02:25:31.407Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-      <category term="go" scheme="http://yoursite.com/categories/go/"/>
-    
-    
-      <category term="go" scheme="http://yoursite.com/tags/go/"/>
     
   </entry>
   
