@@ -76,6 +76,81 @@
     
     
     
+    <article id="post-springmvc/springmvc拦截器的使用" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/18/springmvc/springmvc%E6%8B%A6%E6%88%AA%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/"
+    >springmvc拦截器的使用</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/18/springmvc/springmvc%E6%8B%A6%E6%88%AA%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/" class="article-date">
+  <time datetime="2020-05-18T07:51:09.000Z" itemprop="datePublished">2020-05-18</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/springmvc/">springmvc</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>再开发的工程中我们常常需要拦截没有登陆的用户进行访问页面，这时候springmvc为我们提供了拦截器，让我们能够在工作中进行有效的开发。要使用springmvc的拦截器首先需要实现它的一个接口HandlerInterceptor:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">public class MyInterceptor implements HandlerInterceptor &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception &#123;</span><br><span class="line">        &#x2F;*</span><br><span class="line">        拦截器预处理，controller之前执行</span><br><span class="line">        return true:放行，执行下一个拦截器，如果没有执行controller中的方法</span><br><span class="line">        return false:不放行,可以使用request,response提前跳转到其他的页面</span><br><span class="line">         *&#x2F;</span><br><span class="line">        System.out.println(&quot;MyInterceptor的preHandle的方法执行了&quot;);</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 后处理方法</span><br><span class="line">     * @param request</span><br><span class="line">     * @param response</span><br><span class="line">     * @param handler</span><br><span class="line">     * @param modelAndView</span><br><span class="line">     * @throws Exception</span><br><span class="line">     *&#x2F;</span><br><span class="line">    @Override</span><br><span class="line">    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception &#123;</span><br><span class="line">        System.out.println(&quot;执行.....之后&quot;);</span><br><span class="line">        &#x2F;&#x2F;执行这个跳转后controller的方法跳转不再执行</span><br><span class="line">        request.getRequestDispatcher(&quot;&#x2F;WEB-INF&#x2F;pages&#x2F;error.jsp&quot;).forward(request,response);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception &#123;</span><br><span class="line">       &#x2F;&#x2F;页面转发成功后，才会执行</span><br><span class="line">        System.out.println(&quot;这个是最后执行的&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后需要在主配置文件中配置拦截器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;mvc:interceptors&gt;</span><br><span class="line">                &lt;mvc:interceptor&gt;</span><br><span class="line">                        &lt;!--你要拦截的具体的方法--&gt;</span><br><span class="line">                        &lt;mvc:mapping path&#x3D;&quot;&#x2F;user&#x2F;*&quot;&#x2F;&gt;</span><br><span class="line">                        &lt;!--你不要拦截的方法--&gt;</span><br><span class="line">                        &lt;!--两个配一个就好了--&gt;</span><br><span class="line">                        &lt;!--&lt;mvc:exclude-mapping path&#x3D;&quot;&quot;&gt;&lt;&#x2F;mvc:exclude-mapping&gt;--&gt;</span><br><span class="line">                        &lt;!--配置拦截器对象--&gt;</span><br><span class="line">                        &lt;bean class&#x3D;&quot;cn.itcast.interceptor.MyInterceptor&quot;&gt;&lt;&#x2F;bean&gt;</span><br><span class="line">                &lt;&#x2F;mvc:interceptor&gt;</span><br><span class="line">        &lt;&#x2F;mvc:interceptors&gt;</span><br></pre></td></tr></table></figure>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/springmvc/" rel="tag">springmvc</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
     <article id="post-springmvc/springmvc异常处理器" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -738,83 +813,6 @@
 <p>2.开启spring对注解事务的支持</p>
 <p>3.在需要事务支持的地方使用@Transactional注解</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;总的操作在下面代码中</span><br><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;beans xmlns&#x3D;&quot;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;beans&quot;</span><br><span class="line">       xmlns:xsi&#x3D;&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2001&#x2F;XMLSchema-instance&quot;</span><br><span class="line">       xmlns:aop&#x3D;&quot;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;aop&quot;</span><br><span class="line">       xmlns:tx&#x3D;&quot;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;tx&quot;</span><br><span class="line">       xmlns:context&#x3D;&quot;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;context&quot;</span><br><span class="line">       xsi:schemaLocation&#x3D;&quot;</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;beans</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;beans&#x2F;spring-beans.xsd</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;tx</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;tx&#x2F;spring-tx.xsd</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;aop</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;aop&#x2F;spring-aop.xsd</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;context</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;context&#x2F;spring-context.xsd&quot;&gt;</span><br><span class="line">    &lt;context:component-scan base-package&#x3D;&quot;com.itheima&quot;&gt;&lt;&#x2F;context:component-scan&gt;</span><br><span class="line">    &lt;bean id&#x3D;&quot;transactionManager&quot;  class&#x3D;&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;</span><br><span class="line">        &lt;property name&#x3D;&quot;dataSource&quot; ref&#x3D;&quot;dataSource&quot;&gt;&lt;&#x2F;property&gt;</span><br><span class="line">    &lt;&#x2F;bean&gt;</span><br><span class="line">    &lt;tx:annotation-driven transaction-manager&#x3D;&quot;transactionManager&quot;&gt;&lt;&#x2F;tx:annotation-driven&gt;</span><br><span class="line">&lt;&#x2F;beans&gt;</span><br></pre></td></tr></table></figure>
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/" rel="tag">spring</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-spring/spring基于xml的事务配置" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/05/15/spring/spring%E5%9F%BA%E4%BA%8Exml%E7%9A%84%E4%BA%8B%E5%8A%A1%E9%85%8D%E7%BD%AE/"
-    >spring基于xml的事务配置</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/05/15/spring/spring%E5%9F%BA%E4%BA%8Exml%E7%9A%84%E4%BA%8B%E5%8A%A1%E9%85%8D%E7%BD%AE/" class="article-date">
-  <time datetime="2020-05-15T08:20:44.000Z" itemprop="datePublished">2020-05-15</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/spring/">spring</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h2>spring基于xml的事务配置</h2>
-
-<p>首先事务通知的配置需要一下的约束<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;beans xmlns&#x3D;&quot;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;beans&quot;</span><br><span class="line">       xmlns:xsi&#x3D;&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2001&#x2F;XMLSchema-instance&quot;</span><br><span class="line">       xmlns:aop&#x3D;&quot;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;aop&quot;</span><br><span class="line">       xmlns:tx&#x3D;&quot;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;tx&quot;</span><br><span class="line">       xsi:schemaLocation&#x3D;&quot;</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;beans</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;beans&#x2F;spring-beans.xsd</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;tx</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;tx&#x2F;spring-tx.xsd</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;aop</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;aop&#x2F;spring-aop.xsd&quot;&gt;</span><br><span class="line">        &lt;&#x2F;beans&gt;</span><br></pre></td></tr></table></figure></p>
-<p>1.配置事务管理器<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id&#x3D;&quot;transactionManager&quot;  class&#x3D;&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;</span><br><span class="line">     &lt;property name&#x3D;&quot;dataSource&quot; ref&#x3D;&quot;dataSource&quot;&gt;&lt;&#x2F;property&gt;</span><br><span class="line"> &lt;&#x2F;bean&gt;</span><br><span class="line">    </span><br></pre></td></tr></table></figure></p>
-<p>2.配置事务的通知<br>            此时我们需要导入事务的约束，tx和aop的名称空间和约束<br>            使用tx:advice标签配置事务通知<br>                属性：<br>                    id:给事务通知起一个唯一标识<br>                    transaction-manager:给事务通知提供一个事务管理器引用<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;tx:advice id&#x3D;&quot;txAdvice&quot; transaction-manager&#x3D;&quot;transactionManager&quot;&gt;&lt;&#x2F;tx:advice&gt;</span><br></pre></td></tr></table></figure><br>3.配置AOP中的通用切入点表达式,建立事务通知和切入点表达式的对应关系在事务的通知tx:advice标签的内部,配置事务的属性</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--配置事务的通知--&gt;</span><br><span class="line">&lt;tx:advice id&#x3D;&quot;txAdvice&quot; transaction-manager&#x3D;&quot;transactionManager&quot;&gt;</span><br><span class="line">    &lt;tx:attributes&gt;</span><br><span class="line">        &lt;!--</span><br><span class="line">        read-only&#x3D;用于指定事务是否只读，只有查询方法才能设置为true</span><br><span class="line">        propagation&#x3D;用于指定事务的传播行为。默认值使REQUIRED,表示一定会有事务，增删改的选择。查询方法可以选择SUPPORTS。</span><br><span class="line">        isolation&#x3D;用于指定事务的隔离级别。默认使DEFAULT，表示使用数据库的默认隔离级别</span><br><span class="line">        no-rollback-for&#x3D;用于指定一个异常，当产生该异常时，事务回滚，产生其他异常时。事务不回滚，没有默认值。不写时表示任何异常都回滚。</span><br><span class="line">        rollback-for&#x3D;用于指定一个异常，用于指定一个异常，当产生该异常时，事务回滚，产生其他异常时，事务不回滚，没有默认值。不写时表示任何异常都回滚</span><br><span class="line">        timeout&#x3D;用于指定事务的超时时间，默认值使-1表示永不超时，如果指定了数值，以秒为单位</span><br><span class="line">        --&gt;</span><br><span class="line">        &lt;tx:method name&#x3D;&quot;*&quot; propagation&#x3D;&quot;REQUIRED&quot; read-only&#x3D;&quot;true&quot; &#x2F;&gt;</span><br><span class="line">        &lt;tx:method name&#x3D;&quot;find*&quot; propagation&#x3D;&quot;SUPPORTS&quot; read-only&#x3D;&quot;false&quot;&gt;&lt;&#x2F;tx:method&gt;&lt;!--优先级大于上方--&gt;</span><br><span class="line">    &lt;&#x2F;tx:attributes&gt;</span><br><span class="line">&lt;&#x2F;tx:advice&gt;</span><br><span class="line">&lt;aop:config&gt;</span><br><span class="line">    &lt;aop:pointcut id&#x3D;&quot;pt1&quot; expression&#x3D;&quot;execution(* com.itheima.service.impl.AccountServiceImpl.*(..))&quot;&gt;&lt;&#x2F;aop:pointcut&gt;</span><br><span class="line">    &lt;aop:advisor advice-ref&#x3D;&quot;txAdvice&quot; pointcut-ref&#x3D;&quot;pt1&quot;&gt;&lt;&#x2F;aop:advisor&gt;</span><br><span class="line">&lt;&#x2F;aop:config&gt;</span><br></pre></td></tr></table></figure>
-
       
       <!-- reward -->
       

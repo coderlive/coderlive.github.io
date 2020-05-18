@@ -76,6 +76,104 @@
     
     
     
+    <article id="post-mybatis/mybatis缓存机制" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/04/19/mybatis/mybatis%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6/"
+    >mybatis缓存机制</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/04/19/mybatis/mybatis%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6/" class="article-date">
+  <time datetime="2020-04-19T02:21:48.000Z" itemprop="datePublished">2020-04-19</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/mybatis/">mybatis</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h2>一级缓存的工作原理如下图所示：</h2>
+<img src="/2020/04/19/mybatis/mybatis%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6/%E4%B8%80%E7%BA%A7%E7%BC%93%E5%AD%98.png" class="" title="MyBatis缓存机制">
+&nbsp;&nbsp;&nbsp;&nbsp;该图阐述了一个SqlSession类的实例对象下的一级缓存的工作原理。当第一次查询id为1
+的用户时，sqlSession首先到一级缓存区域查询，如果没有相关数据，则会到数据库中去查询。然后sqlSession将该
+查询结果保存到一级缓存区域。在下一次查询的时候，如果sqlSession执行了commit查询操作（即执行了修改、添加
+和删除），则会清空它的一级缓存区域，以此来保证缓存中的信息时最新的，避免脏读现象发生。如果期间sqlSession
+一直没有执行commit操作修改数据，那么下一次查询id为1的用户信息时，sqlSession在一级缓存中就会发现该信息，
+然后从缓存中获取用户信息。
+<h2>二级缓存原理</h2>
+&nbsp;&nbsp;&nbsp;&nbsp;由上可知，一级缓存时基于同一个SqlSession类的实例对象的。但是，有些时候在Web工程
+中会将执行查询操作的方法封装在一个Service方法中，当执行完一次后，Service方法结束，此时SqlSession类的实例
+对象就会关闭，一级缓存就会被清空。此时若再次调用Service方法查询同一个信息时，会新打开一个SqlSession类的实
+例对象，由于一级缓存已经被清空，所以执行再次访问数据库，并将查询的数据再次放入缓存中。
+&nbsp;&nbsp;&nbsp;&nbsp;为了解决这个问题，Mybatis引入了二级缓存。Mybatis的二级缓存存在于Mapper实例中，当
+多个SqlSession类的实例对象加载Mapper进行查询时，会先去Mapper的缓存区域寻找该值，若不存在，则去数据库中查询，
+然后将查询出来的结果存储到缓存区域，待下次查询相同数据时，从缓存区域中获取。当某个Sqlsession类的实例对象执行
+了增、删、改等改变数据的操作时，Mapper实例都会清空二级缓存。
+<img src="/2020/04/19/mybatis/mybatis%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6/%E4%BA%8C%E7%BA%A7%E7%BC%93%E5%AD%98.png" class="" title="MyBatis缓存机制">
+<h2>Mybatis的一级缓存和二级缓存执行顺序</h2>
+1、先判断二级缓存是否开启，如果没开启，再判断一级缓存是否开启，如果没开启，直接查数据库
+
+<p>2、如果一级缓存关闭，即使二级缓存开启也没有数据，因为二级缓存的数据从一级缓存获取</p>
+<p>3、一般不会关闭一级缓存</p>
+<p>4、二级缓存默认不开启</p>
+<p>5、如果二级缓存关闭，直接判断一级缓存是否有数据，如果没有就查数据库</p>
+<p>6、如果二级缓存开启，先判断二级缓存有没有数据，如果有就直接返回；如果没有，就查询一级缓存，如果有就返回，没有就查询数据库；</p>
+<p>==》综上：先查二级缓存，再查一级缓存，再查数据库；即使在一个sqlSession中，也会先查二级缓存；一个namespace中的查询更是如此；</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mybatis/" rel="tag">mybatis</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
     <article id="post-springmvc/index" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
