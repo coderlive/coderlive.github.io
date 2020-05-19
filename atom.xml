@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-05-19T06:55:07.173Z</updated>
+  <updated>2020-05-19T08:45:41.275Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>springboot入门小案例</title>
+    <link href="http://yoursite.com/2020/05/19/springboot/springboot%E5%85%A5%E9%97%A8%E5%B0%8F%E6%A1%88%E4%BE%8B/"/>
+    <id>http://yoursite.com/2020/05/19/springboot/springboot%E5%85%A5%E9%97%A8%E5%B0%8F%E6%A1%88%E4%BE%8B/</id>
+    <published>2020-05-19T08:40:17.000Z</published>
+    <updated>2020-05-19T08:45:41.275Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3&gt;1.创建一个maven工程(jar)&lt;/h3&gt;
+
+&lt;h3&gt;2.导入spring boot相关的依赖&lt;/h3&gt;
+
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span
+        
+      
+    
+    </summary>
+    
+    
+      <category term="springboot" scheme="http://yoursite.com/categories/springboot/"/>
+    
+    
+      <category term="springboot" scheme="http://yoursite.com/tags/springboot/"/>
+    
+  </entry>
   
   <entry>
     <title>SSM三大框架整合</title>
@@ -522,36 +553,6 @@
 &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;spring注解是用于注入数据的，它们的作用就和在xml配置文件下写一个property标签的作用是一样的,当引用注解时，我们的spring配置文件应该
 使用下面的头文件来使用;
 &lt;figur
-        
-      
-    
-    </summary>
-    
-    
-      <category term="spring" scheme="http://yoursite.com/categories/spring/"/>
-    
-    
-      <category term="spring" scheme="http://yoursite.com/tags/spring/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>spring配置文件类注解</title>
-    <link href="http://yoursite.com/2020/04/19/spring/spring%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%B1%BB%E6%B3%A8%E8%A7%A3/"/>
-    <id>http://yoursite.com/2020/04/19/spring/spring%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%B1%BB%E6%B3%A8%E8%A7%A3/</id>
-    <published>2020-04-19T02:21:56.000Z</published>
-    <updated>2020-05-12T10:35:55.332Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2&gt;基于注解的配置文件&lt;/h2&gt;
-
-&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在spring中我们可以使用注解来代替配置文件，而具体的一个配置模板如下所示：&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td
         
       
     

@@ -513,4 +513,32 @@ org.apache.log4j.WriterAppender（将日志信息以流格式发送到任意指�
         <tag>spring</tag>
       </tags>
   </entry>
+  <entry>
+    <title>springboot入门小案例</title>
+    <url>/2020/05/19/springboot/springboot%E5%85%A5%E9%97%A8%E5%B0%8F%E6%A1%88%E4%BE%8B/</url>
+    <content><![CDATA[<h3>1.创建一个maven工程(jar)</h3>
+
+<h3>2.导入spring boot相关的依赖</h3>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;parent&gt;</span><br><span class="line">&lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">&lt;artifactId&gt;spring‐boot‐starter‐parent&lt;&#x2F;artifactId&gt;</span><br><span class="line">&lt;version&gt;1.5.9.RELEASE&lt;&#x2F;version&gt;</span><br><span class="line">&lt;&#x2F;parent&gt;</span><br><span class="line">&lt;dependencies&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">&lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">&lt;artifactId&gt;spring‐boot‐starter‐web&lt;&#x2F;artifactId&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br><span class="line">&lt;&#x2F;dependencies&gt;</span><br></pre></td></tr></table></figure>
+<h3>3.编写一个主程序,启动Spring Boot应用</h3>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line">* @SpringBootApplication 来标注一个主程序类，说明这是一个Spring Boot应用</span><br><span class="line">*&#x2F;</span><br><span class="line">@SpringBootApplication</span><br><span class="line">public class HelloWorldMainApplication &#123;</span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">&#x2F;&#x2F; Spring应用启动起来</span><br><span class="line">SpringApplication.run(HelloWorldMainApplication.class,args);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3>4.编写相关的Controller</h3>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Controller</span><br><span class="line">public class HelloController &#123;</span><br><span class="line">@ResponseBody</span><br><span class="line">@RequestMapping(&quot;&#x2F;hello&quot;)</span><br><span class="line">public String hello()&#123;</span><br><span class="line">return &quot;Hello World!&quot;;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3>5.运行主程序测试</h3>
+
+<h3>6.简化部署</h3>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!‐‐ 这个插件，可以将应用打包成一个可执行的jar包；‐‐&gt;</span><br><span class="line">&lt;build&gt;</span><br><span class="line">&lt;plugins&gt;</span><br><span class="line">&lt;plugin&gt;</span><br><span class="line">&lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">&lt;artifactId&gt;spring‐boot‐maven‐plugin&lt;&#x2F;artifactId&gt;</span><br><span class="line">&lt;&#x2F;plugin&gt;</span><br><span class="line">&lt;&#x2F;plugins&gt;</span><br><span class="line">&lt;&#x2F;build&gt;</span><br></pre></td></tr></table></figure>
+<p>将这个应用打成jar包，直接使用java -jar的命令进行执行</p>
+]]></content>
+      <categories>
+        <category>springboot</category>
+      </categories>
+      <tags>
+        <tag>springboot</tag>
+      </tags>
+  </entry>
 </search>
