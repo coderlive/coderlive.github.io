@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-05-18T07:58:15.100Z</updated>
+  <updated>2020-05-19T06:55:07.173Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SSM三大框架整合</title>
+    <link href="http://yoursite.com/2020/05/19/spring/SSM%E4%B8%89%E5%A4%A7%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88/"/>
+    <id>http://yoursite.com/2020/05/19/spring/SSM%E4%B8%89%E5%A4%A7%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88/</id>
+    <published>2020-05-19T06:39:37.000Z</published>
+    <updated>2020-05-19T06:55:07.173Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;学习SSM三大框架之后，我们就需要自己对三大框架进行整合，然而三大框架的整合还是有一定的难度的，为了加强记忆，我把整合过程中一些&lt;br&gt;需要的配置给记录下来，以方便以后需要的时候能够更加快速有效的获取到。&lt;br&gt;因为SSM是基于Maven来创建项目的,因此我们需要引入响应的
+        
+      
+    
+    </summary>
+    
+    
+      <category term="spring" scheme="http://yoursite.com/categories/spring/"/>
+    
+    
+      <category term="spring" scheme="http://yoursite.com/tags/spring/"/>
+    
+  </entry>
   
   <entry>
     <title>springmvc拦截器的使用</title>
@@ -535,33 +562,6 @@
     
     
       <category term="spring" scheme="http://yoursite.com/tags/spring/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MyBatis运行流程</title>
-    <link href="http://yoursite.com/2020/04/19/mybatis/MyBatis%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B/"/>
-    <id>http://yoursite.com/2020/04/19/mybatis/MyBatis%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B/</id>
-    <published>2020-04-19T02:21:48.000Z</published>
-    <updated>2020-05-06T08:10:25.945Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;MyBatis的整个运行流程，也是紧紧围绕着数据库连接池配置文件MyBatisConfig.xml(一般按个人&lt;br&gt;喜好来命名，但规范命名比较好)，以及SQL映射配置文件Mapper.xml而开展的。&lt;br&gt;&amp;nbsp;&amp;n
-        
-      
-    
-    </summary>
-    
-    
-      <category term="mybatis" scheme="http://yoursite.com/categories/mybatis/"/>
-    
-    
-      <category term="mybatis" scheme="http://yoursite.com/tags/mybatis/"/>
     
   </entry>
   
