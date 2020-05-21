@@ -541,4 +541,31 @@ org.apache.log4j.WriterAppender（将日志信息以流格式发送到任意指�
         <tag>springboot</tag>
       </tags>
   </entry>
+  <entry>
+    <title>springboot配置文件值获取</title>
+    <url>/2020/05/21/springboot/springboot%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%80%BC%E8%8E%B7%E5%8F%96/</url>
+    <content><![CDATA[<h3>在springboot中我们有两种配置文件的方式:</h3>
+
+<p>1.application.yml<br>2.application.properties<br>这两种方式都是可以放在一起使用时都是可以的，但是它们会相互的覆盖，所以使用其中一种就好了<br>有时候我们需要为一个实体类注入属性,这时候我们可以采用@ConfigurationProperties注解来获取配置文件中的值来注入属性值<br>下面我们先编写一个实体类，为了方便查看，我把get和set方法都省略了</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">package com.atguigu.springboot.bean;</span><br><span class="line"></span><br><span class="line">import org.springframework.boot.context.properties.ConfigurationProperties;</span><br><span class="line">import org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line">import java.util.Date;</span><br><span class="line">import java.util.List;</span><br><span class="line">import java.util.Map;</span><br><span class="line">@Component</span><br><span class="line">@ConfigurationProperties(prefix &#x3D; &quot;person&quot;)</span><br><span class="line">public class Person &#123;</span><br><span class="line">    private String lastName;</span><br><span class="line">    private Integer age;</span><br><span class="line">    private Boolean boss;</span><br><span class="line">    private Date birth;</span><br><span class="line">    private Map&lt;String,Object&gt; maps;</span><br><span class="line">    private List&lt;Object&gt; lists;</span><br><span class="line">    private Dog dog;</span><br><span class="line">public class Dog &#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private String age;</span><br></pre></td></tr></table></figure>
+<p>prefix = “person”表示的是会读取配置文件中前缀为person的配置并注入实体类对象</p>
+<h2>接下来我们可以才用两种方式来书写配置文件</h2>
+
+<h3>application.properties方式</h3>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">person.age&#x3D;18</span><br><span class="line">person.birth&#x3D;1999&#x2F;8&#x2F;05</span><br><span class="line">person.boss&#x3D;false</span><br><span class="line">person.last-name&#x3D;李四</span><br><span class="line">person.maps.k1&#x3D;v1</span><br><span class="line">person.maps.k2&#x3D;v2</span><br><span class="line">person.lists&#x3D;a,v,c</span><br><span class="line">person.dog.name&#x3D;dog</span><br><span class="line">person.dog.age&#x3D;15</span><br></pre></td></tr></table></figure>
+<p>其中我们要注意的是我们properties配置文件默认读取的时候不是中文编码，我们需要把在idea中把它设置读取为中文编码的格式点击<br>File-&gt;Setting-&gt;搜索File Encodings,在下面选项中选择UTF-8编码，并打勾右边的选框保存修改就可以了</p>
+<img src="/2020/05/21/springboot/springboot%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%80%BC%E8%8E%B7%E5%8F%96/%E8%A7%A3%E5%86%B3%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81.png" class="" title="springboot配置文件值获取">
+<h3>application.yml方式</h3>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">server:</span><br><span class="line">  port: 8081</span><br><span class="line"></span><br><span class="line">person:</span><br><span class="line">  lastName: zhangsan</span><br><span class="line">  age: 18</span><br><span class="line">  boss: false</span><br><span class="line">  birth: 2017&#x2F;12&#x2F;12</span><br><span class="line">  maps: &#123;k1: v1,k2: v2&#125;</span><br><span class="line">  lists:</span><br><span class="line">    - lisi</span><br><span class="line">    - zhaoliu</span><br><span class="line">    - faker</span><br><span class="line">  dog:</span><br><span class="line">    name: 小狗</span><br><span class="line">    age: 12</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>springboot</category>
+      </categories>
+      <tags>
+        <tag>springboot</tag>
+      </tags>
+  </entry>
 </search>

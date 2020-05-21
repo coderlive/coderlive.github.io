@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-05-19T08:45:41.275Z</updated>
+  <updated>2020-05-21T09:13:53.425Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>springboot配置文件值获取</title>
+    <link href="http://yoursite.com/2020/05/21/springboot/springboot%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%80%BC%E8%8E%B7%E5%8F%96/"/>
+    <id>http://yoursite.com/2020/05/21/springboot/springboot%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%80%BC%E8%8E%B7%E5%8F%96/</id>
+    <published>2020-05-21T08:58:40.000Z</published>
+    <updated>2020-05-21T09:13:53.425Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3&gt;在springboot中我们有两种配置文件的方式:&lt;/h3&gt;
+
+&lt;p&gt;1.application.yml&lt;br&gt;2.application.properties&lt;br&gt;这两种方式都是可以放在一起使用时都是可以的，但是它们会相互的覆盖，所以使用其中一种就好了&lt;br&gt;有时候我
+        
+      
+    
+    </summary>
+    
+    
+      <category term="springboot" scheme="http://yoursite.com/categories/springboot/"/>
+    
+    
+      <category term="springboot" scheme="http://yoursite.com/tags/springboot/"/>
+    
+  </entry>
   
   <entry>
     <title>springboot入门小案例</title>
@@ -525,36 +554,6 @@
     <updated>2020-04-19T02:26:36.249Z</updated>
     
     <summary type="html">
-    
-    </summary>
-    
-    
-      <category term="spring" scheme="http://yoursite.com/categories/spring/"/>
-    
-    
-      <category term="spring" scheme="http://yoursite.com/tags/spring/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>spring注解笔记</title>
-    <link href="http://yoursite.com/2020/04/19/spring/spring%E6%B3%A8%E8%A7%A3%E7%AC%94%E8%AE%B0/"/>
-    <id>http://yoursite.com/2020/04/19/spring/spring%E6%B3%A8%E8%A7%A3%E7%AC%94%E8%AE%B0/</id>
-    <published>2020-04-19T02:21:56.000Z</published>
-    <updated>2020-05-12T02:05:27.781Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2&gt;spring注解详解&lt;/h2&gt;
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;spring注解是用于注入数据的，它们的作用就和在xml配置文件下写一个property标签的作用是一样的,当引用注解时，我们的spring配置文件应该
-使用下面的头文件来使用;
-&lt;figur
-        
-      
     
     </summary>
     

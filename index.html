@@ -76,6 +76,93 @@
     
     
     
+    <article id="post-springboot/springboot配置文件值获取" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/21/springboot/springboot%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%80%BC%E8%8E%B7%E5%8F%96/"
+    >springboot配置文件值获取</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/21/springboot/springboot%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%80%BC%E8%8E%B7%E5%8F%96/" class="article-date">
+  <time datetime="2020-05-21T08:58:40.000Z" itemprop="datePublished">2020-05-21</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/springboot/">springboot</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h3>在springboot中我们有两种配置文件的方式:</h3>
+
+<p>1.application.yml<br>2.application.properties<br>这两种方式都是可以放在一起使用时都是可以的，但是它们会相互的覆盖，所以使用其中一种就好了<br>有时候我们需要为一个实体类注入属性,这时候我们可以采用@ConfigurationProperties注解来获取配置文件中的值来注入属性值<br>下面我们先编写一个实体类，为了方便查看，我把get和set方法都省略了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">package com.atguigu.springboot.bean;</span><br><span class="line"></span><br><span class="line">import org.springframework.boot.context.properties.ConfigurationProperties;</span><br><span class="line">import org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line">import java.util.Date;</span><br><span class="line">import java.util.List;</span><br><span class="line">import java.util.Map;</span><br><span class="line">@Component</span><br><span class="line">@ConfigurationProperties(prefix &#x3D; &quot;person&quot;)</span><br><span class="line">public class Person &#123;</span><br><span class="line">    private String lastName;</span><br><span class="line">    private Integer age;</span><br><span class="line">    private Boolean boss;</span><br><span class="line">    private Date birth;</span><br><span class="line">    private Map&lt;String,Object&gt; maps;</span><br><span class="line">    private List&lt;Object&gt; lists;</span><br><span class="line">    private Dog dog;</span><br><span class="line">public class Dog &#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private String age;</span><br></pre></td></tr></table></figure>
+<p>prefix = “person”表示的是会读取配置文件中前缀为person的配置并注入实体类对象</p>
+<h2>接下来我们可以才用两种方式来书写配置文件</h2>
+
+<h3>application.properties方式</h3>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">person.age&#x3D;18</span><br><span class="line">person.birth&#x3D;1999&#x2F;8&#x2F;05</span><br><span class="line">person.boss&#x3D;false</span><br><span class="line">person.last-name&#x3D;李四</span><br><span class="line">person.maps.k1&#x3D;v1</span><br><span class="line">person.maps.k2&#x3D;v2</span><br><span class="line">person.lists&#x3D;a,v,c</span><br><span class="line">person.dog.name&#x3D;dog</span><br><span class="line">person.dog.age&#x3D;15</span><br></pre></td></tr></table></figure>
+<p>其中我们要注意的是我们properties配置文件默认读取的时候不是中文编码，我们需要把在idea中把它设置读取为中文编码的格式点击<br>File-&gt;Setting-&gt;搜索File Encodings,在下面选项中选择UTF-8编码，并打勾右边的选框保存修改就可以了</p>
+<img src="/2020/05/21/springboot/springboot%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%80%BC%E8%8E%B7%E5%8F%96/%E8%A7%A3%E5%86%B3%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81.png" class="" title="springboot配置文件值获取">
+<h3>application.yml方式</h3>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">server:</span><br><span class="line">  port: 8081</span><br><span class="line"></span><br><span class="line">person:</span><br><span class="line">  lastName: zhangsan</span><br><span class="line">  age: 18</span><br><span class="line">  boss: false</span><br><span class="line">  birth: 2017&#x2F;12&#x2F;12</span><br><span class="line">  maps: &#123;k1: v1,k2: v2&#125;</span><br><span class="line">  lists:</span><br><span class="line">    - lisi</span><br><span class="line">    - zhaoliu</span><br><span class="line">    - faker</span><br><span class="line">  dog:</span><br><span class="line">    name: 小狗</span><br><span class="line">    age: 12</span><br></pre></td></tr></table></figure>
+
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/springboot/" rel="tag">springboot</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
     <article id="post-springboot/springboot入门小案例" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -753,81 +840,6 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--配置自定义的类型转换器--&gt;</span><br><span class="line">       &lt;bean id&#x3D;&quot;conversionServiceFactoryBean&quot; class&#x3D;&quot;org.springframework.context.support.ConversionServiceFactoryBean&quot;&gt;</span><br><span class="line">               &lt;property name&#x3D;&quot;converters&quot;&gt;</span><br><span class="line">                       &lt;set&gt;</span><br><span class="line">                               &lt;bean class&#x3D;&quot;cn.itcast.utils.StringtoDate&quot;&gt;&lt;&#x2F;bean&gt;</span><br><span class="line">                       &lt;&#x2F;set&gt;</span><br><span class="line">               &lt;&#x2F;property&gt;</span><br><span class="line">       &lt;&#x2F;bean&gt;</span><br><span class="line">       &lt;mvc:annotation-driven conversion-service&#x3D;&quot;conversionServiceFactoryBean&quot;&gt;&lt;&#x2F;mvc:annotation-driven&gt;</span><br></pre></td></tr></table></figure>
 
 
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/springmvc/" rel="tag">springmvc</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-springmvc/springmvc解决中文乱码问题" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/05/16/springmvc/springmvc%E8%A7%A3%E5%86%B3%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/"
-    >springmvc解决中文乱码问题</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/05/16/springmvc/springmvc%E8%A7%A3%E5%86%B3%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/" class="article-date">
-  <time datetime="2020-05-16T13:46:15.000Z" itemprop="datePublished">2020-05-16</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/springmvc/">springmvc</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h2>springmvc解决中文乱码问题</h2>
-
-<p>有时候我们在使用springmvc的时候会出现中文乱码的问题，这个时候我们就需要在web.xml中配置一个</p>
-<p>springmvc的过滤器来解决中文乱码的问题</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--配置过滤器--&gt;</span><br><span class="line">&lt;filter&gt;</span><br><span class="line">  &lt;filter-name&gt;encodingFilter&lt;&#x2F;filter-name&gt;</span><br><span class="line">  &lt;filter-class&gt;org.springframework.web.filter.CharacterEncodingFilter&lt;&#x2F;filter-class&gt;</span><br><span class="line">  &lt;init-param&gt;</span><br><span class="line">    &lt;param-name&gt;encoding&lt;&#x2F;param-name&gt;</span><br><span class="line">    &lt;param-value&gt;UTF-8&lt;&#x2F;param-value&gt;</span><br><span class="line">  &lt;&#x2F;init-param&gt;</span><br><span class="line">&lt;&#x2F;filter&gt;</span><br><span class="line">&lt;filter-mapping&gt;</span><br><span class="line">  &lt;filter-name&gt;encodingFilter&lt;&#x2F;filter-name&gt;</span><br><span class="line">  &lt;url-pattern&gt;&#x2F;*&lt;&#x2F;url-pattern&gt;</span><br><span class="line">&lt;&#x2F;filter-mapping&gt;</span><br></pre></td></tr></table></figure>
       
       <!-- reward -->
       
