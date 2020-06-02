@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    git命令大全 |  浪客
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="浪客" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content on">
+      <section class="outer">
+  <article id="常识-基本常识/git命令大全" class="article article-type-常识" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  git命令大全
+</h1>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/28/%E5%9F%BA%E6%9C%AC%E5%B8%B8%E8%AF%86/git%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/" class="article-date">
+  <time datetime="2020-05-28T07:29:45.000Z" itemprop="datePublished">2020-05-28</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/git/">git</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">2.9k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">11 min</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h2 id="Git的基本使用"><a href="#Git的基本使用" class="headerlink" title="Git的基本使用"></a>Git的基本使用</h2><h3 id="创建一个仓库"><a href="#创建一个仓库" class="headerlink" title="创建一个仓库"></a>创建一个仓库</h3><ul>
+<li>git init<br>使用这个初始化命令后，会生成一个.git的隐藏文件<h2 id="Git配置"><a href="#Git配置" class="headerlink" title="Git配置"></a>Git配置</h2><h4 id="姓名-git-config-–global-user-name-“theqin”"><a href="#姓名-git-config-–global-user-name-“theqin”" class="headerlink" title="姓名:git config –global user.name “theqin”"></a>姓名:git config –global user.name “theqin”</h4><h4 id="邮箱-git-config-–global-user-email-“1029589750-qq-com“"><a href="#邮箱-git-config-–global-user-email-“1029589750-qq-com“" class="headerlink" title="邮箱:git config –global user.email “1029589750@qq.com“"></a>邮箱:git config –global user.email “<a href="mailto:1029589750@qq.com">1029589750@qq.com</a>“</h4><h4 id="差异颜色使用-git-config-–global-color-ui-true"><a href="#差异颜色使用-git-config-–global-color-ui-true" class="headerlink" title="差异颜色使用:git config –global color.ui true"></a>差异颜色使用:git config –global color.ui true</h4><h4 id="设置别名-git-config-–global-alias-it-init"><a href="#设置别名-git-config-–global-alias-it-init" class="headerlink" title="设置别名:git config –global alias.it init"></a>设置别名:git config –global alias.it init</h4><h2 id="Git基本流程"><a href="#Git基本流程" class="headerlink" title="Git基本流程"></a>Git基本流程</h2><h4 id="对已修改文件作快照-并保存到暂存区域"><a href="#对已修改文件作快照-并保存到暂存区域" class="headerlink" title="对已修改文件作快照,并保存到暂存区域"></a>对已修改文件作快照,并保存到暂存区域</h4></li>
+<li>git add file.c <h4 id="将保存在暂存区的文件快照提交到版本库"><a href="#将保存在暂存区的文件快照提交到版本库" class="headerlink" title="将保存在暂存区的文件快照提交到版本库"></a>将保存在暂存区的文件快照提交到版本库</h4></li>
+<li>单步提交：git commit -m “commit info” </li>
+<li>一次性提交：git commit -a </li>
+<li>修改最后一次提交：git commit -amend<br>注意：<br>  如果提交修改没有保存到暂存区的话，是不会提交到版本库的。<h2 id="Git文件删除"><a href="#Git文件删除" class="headerlink" title="Git文件删除"></a>Git文件删除</h2><h4 id="从工作目录中删除"><a href="#从工作目录中删除" class="headerlink" title="从工作目录中删除"></a>从工作目录中删除</h4></li>
+<li>rm -rf file.c Linux自带的命令<h4 id="从工作目录和暂存区中删除"><a href="#从工作目录和暂存区中删除" class="headerlink" title="从工作目录和暂存区中删除"></a>从工作目录和暂存区中删除</h4></li>
+<li>git rm -f file.c<h4 id="从暂存区中删除-工作目录中保留"><a href="#从暂存区中删除-工作目录中保留" class="headerlink" title="从暂存区中删除,工作目录中保留"></a>从暂存区中删除,工作目录中保留</h4></li>
+<li>git rm –cached file.c<h4 id="从版本库中删除：版本回退到错误提交前的版本"><a href="#从版本库中删除：版本回退到错误提交前的版本" class="headerlink" title="从版本库中删除：版本回退到错误提交前的版本"></a>从版本库中删除：版本回退到错误提交前的版本</h4></li>
+<li>撤销提交到暂存区:git reset -soft HEAD^(表示回退一个版本)</li>
+<li>撤销提交到工作区:git reset -mixed HEAD^(表示回退一个版本)</li>
+<li>将工作区、暂存区和版本库恢复到指定版本：git reset –hard HEAD^(表示回退一个版本)<br>提示：删除一个也算修改，也可以从版本库中还原<h4 id="撤销版本库的提交"><a href="#撤销版本库的提交" class="headerlink" title="撤销版本库的提交"></a>撤销版本库的提交</h4></li>
+<li>git reset –hard HEAD^</li>
+<li>回退版本，并刷新到工作区中</li>
+<li>先前的提交对象还在版本库中孤独的存在着</li>
+</ul>
+<h2 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h2><h4 id="撤销工作区的修改"><a href="#撤销工作区的修改" class="headerlink" title="撤销工作区的修改"></a>撤销工作区的修改</h4><ul>
+<li>git checkout file.c </li>
+<li>让文件回到最近一次commit或add的状态</li>
+<li>若文件还没添加到暂存区且做了修改:回到暂存区状态<h4 id="撤销暂存区的内容"><a href="#撤销暂存区的内容" class="headerlink" title="撤销暂存区的内容"></a>撤销暂存区的内容</h4></li>
+<li>git reset HEAD file.c</li>
+<li>将暂存区的修改撤销掉，重新放回工作区<h4 id="查看当前的状态"><a href="#查看当前的状态" class="headerlink" title="查看当前的状态"></a>查看当前的状态</h4></li>
+<li>git status<h4 id="查看提交历史"><a href="#查看提交历史" class="headerlink" title="查看提交历史"></a>查看提交历史</h4></li>
+<li>git log  (–oneline可以只显示一行，不用显示太长的哈希字符串)<h4 id="使用git-log查询出来的哈希值在下面命令中查询可以得知具体修改的内容"><a href="#使用git-log查询出来的哈希值在下面命令中查询可以得知具体修改的内容" class="headerlink" title="使用git log查询出来的哈希值在下面命令中查询可以得知具体修改的内容"></a>使用git log查询出来的哈希值在下面命令中查询可以得知具体修改的内容</h4></li>
+<li>git show (哈希值)<h4 id="查看提交差异"><a href="#查看提交差异" class="headerlink" title="查看提交差异"></a>查看提交差异</h4></li>
+<li>git diff<h4 id="克隆一个远程仓库的项目"><a href="#克隆一个远程仓库的项目" class="headerlink" title="克隆一个远程仓库的项目"></a>克隆一个远程仓库的项目</h4></li>
+<li>git clone repo_url(远程仓库的url地址)<h2 id="查看提交历史-详细"><a href="#查看提交历史-详细" class="headerlink" title="查看提交历史(详细)"></a>查看提交历史(详细)</h2><h4 id="参数选项"><a href="#参数选项" class="headerlink" title="参数选项"></a>参数选项</h4></li>
+<li>显示每个版本的修改差异:<br>git log -p -2 | git shortlog</li>
+<li>单行显示3条记录:<br>git log -3 –pretty=oneline |git log –oneline</li>
+<li>图形化显示:<br>git log –graph |gitk<h4 id="缉凶利器-git-blame"><a href="#缉凶利器-git-blame" class="headerlink" title="缉凶利器:git blame"></a>缉凶利器:git blame</h4></li>
+<li>查看一个文件每一行的提交记录</li>
+<li>查看第6到11行代码是谁的提交：<br>git blame file.c -L 6,+5</li>
+<li>查看某个指定文件的提交修改历史<br>git log -c file.c<h2 id="提交查找"><a href="#提交查找" class="headerlink" title="提交查找"></a>提交查找</h2><h4 id="关键字查找"><a href="#关键字查找" class="headerlink" title="关键字查找"></a>关键字查找</h4>不同的参数灵活使用</li>
+<li>查找所有包含hello字符串的文件:git grep hello</li>
+<li>查找显示关键字所在文件的行号:git grep -n hello</li>
+<li>不显示内容,只显示文件名:git grep –name-only hello </li>
+<li>查看每个文件有多少个匹配:git grep -c hello<br>在特定版本里查找</li>
+<li>在v1.0版本里查找:Git grep string v1.0<h4 id="组合查找"><a href="#组合查找" class="headerlink" title="组合查找"></a>组合查找</h4>与查找、或查找</li>
+<li>查找hello world:git grep -e hello –and -e world</li>
+<li>查找hello 或 world: git grep -e hello –or -e world    <h2 id="修改提交"><a href="#修改提交" class="headerlink" title="修改提交"></a>修改提交</h2><h4 id="增补提交"><a href="#增补提交" class="headerlink" title="增补提交"></a>增补提交</h4></li>
+<li>修改最后一次提交:修改提交<br>git commit –amend(需要先把修改的文件添加到缓存区才行)<h4 id="反转提交"><a href="#反转提交" class="headerlink" title="反转提交"></a>反转提交</h4></li>
+<li>将原来的提交取消掉<br>git revert SHA1<ul>
+<li>反转多个提交:要先反转最后提交，防止冲突。此时原操作的逆操作都在暂存区，然后重新手动提交<br>git revert -n HEAD<br>git revert -n SHA1<br>git commit -m “revert HEAD and SHA1”<h2 id="Git置位"><a href="#Git置位" class="headerlink" title="Git置位"></a>Git置位</h2><h4 id="复位"><a href="#复位" class="headerlink" title="复位"></a>复位</h4></li>
+</ul>
+</li>
+<li>版本回退到工作区<br>git reset SHA1<h4 id="软复位"><a href="#软复位" class="headerlink" title="软复位"></a>软复位</h4></li>
+<li>回退版本到暂存区<br>git reset –soft SHA1<h4 id="硬复位"><a href="#硬复位" class="headerlink" title="硬复位"></a>硬复位</h4></li>
+<li>会从版本库和工作目录中同时删除提交<br>git reset –hard SHA1<h2 id="Git分支操作"><a href="#Git分支操作" class="headerlink" title="Git分支操作"></a>Git分支操作</h2><h4 id="查看当前分支"><a href="#查看当前分支" class="headerlink" title="查看当前分支"></a>查看当前分支</h4></li>
+<li>git branch<h4 id="创建一个新的分支"><a href="#创建一个新的分支" class="headerlink" title="创建一个新的分支"></a>创建一个新的分支</h4></li>
+<li>git branch 分支名字<h4 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h4></li>
+<li>git checkout 分支名字<h3 id="Git标签操作-表示当前开发进度到一个里程碑了"><a href="#Git标签操作-表示当前开发进度到一个里程碑了" class="headerlink" title="Git标签操作:表示当前开发进度到一个里程碑了"></a>Git标签操作:表示当前开发进度到一个里程碑了</h3><h4 id="查看当前标签"><a href="#查看当前标签" class="headerlink" title="查看当前标签"></a>查看当前标签</h4></li>
+<li>git tag<h4 id="在当前进度添加一个标签"><a href="#在当前进度添加一个标签" class="headerlink" title="在当前进度添加一个标签"></a>在当前进度添加一个标签</h4></li>
+<li>git tag v1.0.0<h4 id="删除一个标签"><a href="#删除一个标签" class="headerlink" title="删除一个标签"></a>删除一个标签</h4></li>
+<li>git tag -d v1.0.0</li>
+</ul>
+<p>####查看git commit对象信息操作</p>
+<ul>
+<li>git cat-file -p(查看所有信息) -t(查看对象类型) 对象哈希值</li>
+</ul>
+<h2 id="Git忽略指定文件配置"><a href="#Git忽略指定文件配置" class="headerlink" title="Git忽略指定文件配置"></a>Git忽略指定文件配置</h2><h4 id="在git中有些文件是不需要提交到版本库中的"><a href="#在git中有些文件是不需要提交到版本库中的" class="headerlink" title="在git中有些文件是不需要提交到版本库中的"></a>在git中有些文件是不需要提交到版本库中的</h4><ul>
+<li>可执行文件、日志文件、临时文件、库文件<h4 id="忽略文件模式：glob模式匹配"><a href="#忽略文件模式：glob模式匹配" class="headerlink" title="忽略文件模式：glob模式匹配"></a>忽略文件模式：glob模式匹配</h4></li>
+<li>忽略以#开始的行</li>
+<li>忽略某种格式结尾文件*.[bin]</li>
+<li>某个库文件除外，不忽略:!clib.a</li>
+<li>忽略临时文件:*~</li>
+<li>忽略根目录下的某个文件:/text</li>
+<li>忽略某个目录下的所有文件：libs/、libs/*.a</li>
+<li>手动创建.gitignore文件<h2 id="差异比较"><a href="#差异比较" class="headerlink" title="差异比较"></a>差异比较</h2><h4 id="比较工作区和暂存区的差异"><a href="#比较工作区和暂存区的差异" class="headerlink" title="比较工作区和暂存区的差异"></a>比较工作区和暂存区的差异</h4></li>
+<li>git diff</li>
+<li>查看尚未存储文件有哪些新的修改<h4 id="比较暂存区和版本库差异"><a href="#比较暂存区和版本库差异" class="headerlink" title="比较暂存区和版本库差异"></a>比较暂存区和版本库差异</h4></li>
+<li>git diff –cached [HEAD]</li>
+<li>git diff –staged SHA</li>
+<li>查看已暂存文件和上次提交的快照之间的差异<h4 id="比较工作区和版本库差异"><a href="#比较工作区和版本库差异" class="headerlink" title="比较工作区和版本库差异"></a>比较工作区和版本库差异</h4></li>
+<li>git diff HEAD</li>
+<li>查看为暂存文件和最新提交文件快照的区别<h4 id="比较两个版本之间的差异"><a href="#比较两个版本之间的差异" class="headerlink" title="比较两个版本之间的差异"></a>比较两个版本之间的差异</h4></li>
+<li>git diff SHA1 SHA2(SHA代表一个版本号,可以用哈希值来代替)</li>
+<li>查看不同版本之间的差异<h2 id="Git压缩仓库"><a href="#Git压缩仓库" class="headerlink" title="Git压缩仓库"></a>Git压缩仓库</h2></li>
+<li>在日常运行中，git快照会占用磁盘空间</li>
+<li>Git会在增量存储单元中存储修改</li>
+<li>用du -sh 可以查看当前仓库的大小</li>
+<li>通过git gc命令压缩增量存储单元，节省磁盘空间<h4 id="快照的存储"><a href="#快照的存储" class="headerlink" title="快照的存储"></a>快照的存储</h4></li>
+<li>对于修改的内容:做快照处理并保存</li>
+<li>对于未修改的文件:做引用处理<h2 id="给提交重新排序"><a href="#给提交重新排序" class="headerlink" title="给提交重新排序"></a>给提交重新排序</h2></li>
+<li>git rebase -i HEAD~3</li>
+<li>表示要修改前三个提交的顺序<h2 id="Git分支的管理"><a href="#Git分支的管理" class="headerlink" title="Git分支的管理"></a>Git分支的管理</h2><h3 id="分支的基本使用"><a href="#分支的基本使用" class="headerlink" title="分支的基本使用"></a>分支的基本使用</h3><h4 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a>创建分支</h4></li>
+<li>git branch new_branch</li>
+<li>git checkout -b new_branch 新建一个分支并且同时切换到这个分支</li>
+<li>git checkout -b new_branch old_branch 在某个分支上创建新分支<h4 id="查看分支"><a href="#查看分支" class="headerlink" title="查看分支"></a>查看分支</h4></li>
+<li>git branch<h4 id="切换分支-1"><a href="#切换分支-1" class="headerlink" title="切换分支"></a>切换分支</h4></li>
+<li>git checkout branch<h4 id="分支检出很危险，注意！"><a href="#分支检出很危险，注意！" class="headerlink" title="分支检出很危险，注意！"></a>分支检出很危险，注意！</h4></li>
+<li>分支检出其实看作是提交的逆操作</li>
+<li>检出之前一定要保证工作区和缓存区的清洁<h4 id="分支重命名"><a href="#分支重命名" class="headerlink" title="分支重命名"></a>分支重命名</h4>对于未冲突的分支名</li>
+<li>git branch -m oldbranch newbranch<br>对于已经存在的分支</li>
+<li>git branch -M oldbranch newbranch<h4 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h4>对于已经合并的分支，直接删除</li>
+<li>git branch -d branch_name<br>对于未合并的分支，强制删除</li>
+<li>git branch -D branch_name<h4 id="分支合并"><a href="#分支合并" class="headerlink" title="分支合并"></a>分支合并</h4>合并一个分支到当前的分支</li>
+<li>git merge 分支名字<h4 id="压合合并"><a href="#压合合并" class="headerlink" title="压合合并"></a>压合合并</h4>将一个分支上的所有历史合并为一个提交,然后合并到另一个分支上。<br>一般bug或新功能分支都可以使用这种方式合并<br>git merge -squash test_name<h4 id="挑选合并"><a href="#挑选合并" class="headerlink" title="挑选合并"></a>挑选合并</h4>挑选一个提交，添加到当前分支末梢</li>
+<li>git cherry-pick SHA<br>挑选多个提交,添加到当前分支末梢</li>
+<li>git cherry-pick -n SHA</li>
+<li>git commit </li>
+<li>这里您会看到合并并更新到版本库，而是在暂存区保存，可以继续<br>cherry-pick,以后一次性提交即可<h4 id="分支衍合"><a href="#分支衍合" class="headerlink" title="分支衍合"></a>分支衍合</h4>git rebase master<h3 id="分支的修改储藏"><a href="#分支的修改储藏" class="headerlink" title="分支的修改储藏"></a>分支的修改储藏</h3><h4 id="保存当前分支数据"><a href="#保存当前分支数据" class="headerlink" title="保存当前分支数据"></a>保存当前分支数据</h4></li>
+<li>在当前分支工作被打断，进度不适合提交</li>
+<li>保存当前分支工作目录和暂存区的数据</li>
+<li>切换到别的分支做其他工作</li>
+<li>git stash<h4 id="恢复当前分支数据"><a href="#恢复当前分支数据" class="headerlink" title="恢复当前分支数据"></a>恢复当前分支数据</h4></li>
+<li>别的分支完成后，再切换到被打断的分支</li>
+<li>恢复工作区和暂存区的数据</li>
+<li>git stash apply (pop)</li>
+<li>继续工作<h4 id="储藏队列"><a href="#储藏队列" class="headerlink" title="储藏队列"></a>储藏队列</h4></li>
+<li>多次使用stash命令</li>
+<li>查看储藏栈：git stash list</li>
+<li>清空储藏栈：git stash clear</li>
+<li>恢复某次储藏：git stash apply stash@{2}<h3 id="恢复已删除分支的提交"><a href="#恢复已删除分支的提交" class="headerlink" title="恢复已删除分支的提交"></a>恢复已删除分支的提交</h3></li>
+<li>分支这个指针已经删除，但commit对象还存在</li>
+<li>知识脱离了commit链表而已，变成了悬空对象<h4 id="具体步骤"><a href="#具体步骤" class="headerlink" title="具体步骤"></a>具体步骤</h4></li>
+<li>找回提交:git fsck –lost-found(相当于在回收站找东西)</li>
+<li>查看修改:git show SHA</li>
+<li>衍合提交:git rebase SHA</li>
+<li>合并提交:git merge SHA<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4></li>
+<li>提交可以找回来，但是分支找不回来</li>
+<li>commit删除并不是真正的删除<h2 id="远程仓库管理"><a href="#远程仓库管理" class="headerlink" title="远程仓库管理"></a>远程仓库管理</h2><h3 id="SSH公钥配置步骤："><a href="#SSH公钥配置步骤：" class="headerlink" title="SSH公钥配置步骤："></a>SSH公钥配置步骤：</h3>1.本地安装好git；<br>2.桌面右键 Git Bash Here 打开git命令行；<br>3.ssh-keygen -t rsa -C “<a href="mailto:xxxxxx@xxx.com">xxxxxx@xxx.com</a>” (这个写自己注册时的邮箱)（全部按enter）；<br>4.cd ~/.ssh （如果没有执行第三步，则不会有这个文件夹）；<br>5.cat id_rsa.pub 在命令行打开这个文件，会直接输出密钥；<br>6.复制，打开github ，点自己头像 &gt;&gt; settings &gt;&gt; SSH and GPG keys &gt;&gt;New SSH key<h3 id="远程仓库的基本操作"><a href="#远程仓库的基本操作" class="headerlink" title="远程仓库的基本操作"></a>远程仓库的基本操作</h3><h3 id="从远程仓库克隆"><a href="#从远程仓库克隆" class="headerlink" title="从远程仓库克隆"></a>从远程仓库克隆</h3></li>
+<li>git clone repo_addr<h3 id="如果是一个空的仓库，可以将本地仓库添加到远程仓库"><a href="#如果是一个空的仓库，可以将本地仓库添加到远程仓库" class="headerlink" title="如果是一个空的仓库，可以将本地仓库添加到远程仓库"></a>如果是一个空的仓库，可以将本地仓库添加到远程仓库</h3></li>
+<li>git remote add origin <a href="mailto:git@github.com">git@github.com</a>:coderlive/test.git</li>
+<li>建议为本地仓库起一个别名</li>
+<li>git config –global alias.theqin <a href="mailto:git@github.com">git@github.com</a>:coderlive/test.git</li>
+<li>git push -u origin master<h3 id="从远程仓库拉取数据"><a href="#从远程仓库拉取数据" class="headerlink" title="从远程仓库拉取数据"></a>从远程仓库拉取数据</h3></li>
+<li>自动本地master分支并跟踪远程仓库master分支<br>git clone origin</li>
+<li>仅仅是拉取,不合并到本地<br>git fetch</li>
+<li>自动拉取某个分支更新<br>git pull origin dev<h3 id="推送数据到远程仓库"><a href="#推送数据到远程仓库" class="headerlink" title="推送数据到远程仓库"></a>推送数据到远程仓库</h3></li>
+<li>默认是origin和master分支:<br>git push origin master<h3 id="查看远程仓库信息"><a href="#查看远程仓库信息" class="headerlink" title="查看远程仓库信息"></a>查看远程仓库信息</h3></li>
+<li>git remote -v</li>
+<li>git remote show origin<h3 id="指定分支提交"><a href="#指定分支提交" class="headerlink" title="指定分支提交"></a>指定分支提交</h3></li>
+<li>git push origin 本地分支:远程分支</li>
+<li>用这个可以把一个分支提交到另外一个分支<h3 id="远程仓库的删除"><a href="#远程仓库的删除" class="headerlink" title="远程仓库的删除"></a>远程仓库的删除</h3></li>
+<li>git remote rm origin(远程仓库的别名)<h3 id="远程仓库重命名"><a href="#远程仓库重命名" class="headerlink" title="远程仓库重命名"></a>远程仓库重命名</h3></li>
+<li>git remote rename old new <h3 id="解除远程仓库"><a href="#解除远程仓库" class="headerlink" title="解除远程仓库"></a>解除远程仓库</h3></li>
+<li>git remote remove origin<br>###注意：<br>  这里的origin指的只是远程仓库的别名,origin == github仓库地址<h2 id="远程分支"><a href="#远程分支" class="headerlink" title="远程分支"></a>远程分支</h2></li>
+<li>是对远程仓库状态的索引,用origin/master表示<h3 id="远程分支的创建"><a href="#远程分支的创建" class="headerlink" title="远程分支的创建"></a>远程分支的创建</h3></li>
+<li>将本地新建分支直接推送到远程仓库</li>
+<li>git push origin mybranch(本地分支名字):mybranch2(远程分支名字,可以不写)</li>
+<li>远程仓库没有这个分支，将创建这个分支origin/mybranch2</li>
+<li>并将本地分支和远程分支建立关联，以后可以直接push<h3 id="跟踪远程分支"><a href="#跟踪远程分支" class="headerlink" title="跟踪远程分支"></a>跟踪远程分支</h3></li>
+<li>基于远程分支建立一个本地关联分支</li>
+<li>git checkout -b local_branch origin/mybranch2</li>
+<li>git push local_branch 建立关联后，就可以直接进行push和pull   <h3 id="删除远程分支"><a href="#删除远程分支" class="headerlink" title="删除远程分支"></a>删除远程分支</h3></li>
+<li>命令:git push origin:mybranch2(远程分支) <h2 id="标签操作"><a href="#标签操作" class="headerlink" title="标签操作"></a>标签操作</h2><h3 id="打标签"><a href="#打标签" class="headerlink" title="打标签"></a>打标签</h3></li>
+<li>在当前分支的末端创建轻量级标签：git tag V1.0(只创建一个引用)</li>
+<li>给指定某个commit打标签: git tag v1 SHA</li>
+<li>创建重量级标签:git tag -a v1.0 -m “version1.0” SHA(创建了对象存在版本库中)<h3 id="查看标签"><a href="#查看标签" class="headerlink" title="查看标签"></a>查看标签</h3></li>
+<li>查看所有标签:git show 1.0<h3 id="使用标签检出其标记的版本库状态"><a href="#使用标签检出其标记的版本库状态" class="headerlink" title="使用标签检出其标记的版本库状态"></a>使用标签检出其标记的版本库状态</h3></li>
+<li>检出:git checkout v1.0</li>
+<li>标签指向一个commit,跟branch类似，也是一个引用<h3 id="删除标签"><a href="#删除标签" class="headerlink" title="删除标签"></a>删除标签</h3></li>
+<li>删除：git tag -d v1.0<h2 id="远程仓库标签操作"><a href="#远程仓库标签操作" class="headerlink" title="远程仓库标签操作"></a>远程仓库标签操作</h2><h3 id="推送本地标签到远程-发布版本"><a href="#推送本地标签到远程-发布版本" class="headerlink" title="推送本地标签到远程(发布版本)"></a>推送本地标签到远程(发布版本)</h3></li>
+<li>推送某个标签:git push origin v1.0</li>
+<li>推送所有标签:git push origin –tags<h3 id="删除远程标签"><a href="#删除远程标签" class="headerlink" title="删除远程标签"></a>删除远程标签</h3></li>
+<li>先删除本地标签:git tag -d v1.0</li>
+<li>再删除远程标签:git push origin :refs/tags/v1.0</li>
+</ul>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/05/28/%E5%9F%BA%E6%9C%AC%E5%B8%B8%E8%AF%86/git%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9F%BA%E6%9C%AC%E5%B8%B8%E8%AF%86/" rel="tag">基本常识</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2020/06/02/java/java%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            java环境配置
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/05/21/springboot/springboot%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%80%BC%E8%8E%B7%E5%8F%96/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">springboot配置文件值获取</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: '',
+        app_key: '',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'false',
+        avatar: 'monsterid',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2020
+        <i class="ri-heart-fill heart_icon"></i> 覃靖鸿
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        Powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+        <span class="division">|</span>
+        Theme - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="浪客"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['面朝大海，春暖花开', '愿你一生努力，一生被爱', '想要的都拥有，得不到的都释怀'],
+      startDelay: 0,
+      typeSpeed: 200,
+      loop: true,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+  }
+
+</script>
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+
+
+<!-- 复制 -->
+
+  
+<link rel="stylesheet" href="/css/clipboard.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=22707008&auto=1&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>
