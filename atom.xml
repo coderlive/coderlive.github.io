@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-06-02T08:54:50.598Z</updated>
+  <updated>2020-06-11T03:17:30.684Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Eureka开发环境配置</title>
+    <link href="http://yoursite.com/2020/06/11/springcloud/Eureka%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
+    <id>http://yoursite.com/2020/06/11/springcloud/Eureka%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</id>
+    <published>2020-06-11T03:15:45.000Z</published>
+    <updated>2020-06-11T03:17:30.684Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;5-4-3-服务提供者&quot;&gt;&lt;a href=&quot;#5-4-3-服务提供者&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="eureka" scheme="http://yoursite.com/categories/eureka/"/>
+    
+    
+      <category term="eureka" scheme="http://yoursite.com/tags/eureka/"/>
+    
+  </entry>
   
   <entry>
     <title>java环境配置</title>
@@ -559,25 +586,6 @@
     
     
       <category term="maven" scheme="http://yoursite.com/tags/maven/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>/html</title>
-    <link href="http://yoursite.com/2020/04/19/html/index/"/>
-    <id>http://yoursite.com/2020/04/19/html/index/</id>
-    <published>2020-04-19T02:22:20.000Z</published>
-    <updated>2020-04-19T02:25:43.161Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-      <category term="html" scheme="http://yoursite.com/categories/html/"/>
-    
-    
-      <category term="html" scheme="http://yoursite.com/tags/html/"/>
     
   </entry>
   

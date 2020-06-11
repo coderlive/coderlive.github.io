@@ -76,6 +76,129 @@
     
     
     
+    <article id="post-springcloud/Eureka开发环境配置" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/06/11/springcloud/Eureka%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"
+    >Eureka开发环境配置</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/06/11/springcloud/Eureka%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="article-date">
+  <time datetime="2020-06-11T03:15:45.000Z" itemprop="datePublished">2020-06-11</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/eureka/">eureka</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h3 id="5-4-3-服务提供者"><a href="#5-4-3-服务提供者" class="headerlink" title="5.4.3.服务提供者"></a>5.4.3.服务提供者</h3><p>服务提供者要向EurekaServer注册服务，并且完成服务续约等工作。</p>
+<blockquote>
+<p>服务注册</p>
+</blockquote>
+<p>服务提供者在启动时，会检测配置属性中的：<code>eureka.client.register-with-eureka=true</code>参数是否正确，事实上默认就是true。如果值确实为true，则会向EurekaServer发起一个Rest请求，并携带自己的元数据信息，Eureka Server会把这些信息保存到一个双层Map结构中。</p>
+<ul>
+<li>第一层Map的Key就是服务id，一般是配置中的<code>spring.application.name</code>属性</li>
+<li>第二层Map的key是服务的实例id。一般host+ serviceId + port，例如：<code>locahost:service-provider:8081</code></li>
+<li>值则是服务的实例对象，也就是说一个服务，可以同时启动多个不同实例，形成集群。</li>
+</ul>
+<blockquote>
+<p>服务续约</p>
+</blockquote>
+<p>在注册服务完成以后，服务提供者会维持一个心跳（定时向EurekaServer发起Rest请求），告诉EurekaServer：“我还活着”。这个我们称为服务的续约（renew）；</p>
+<p>有两个重要参数可以修改服务续约的行为：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">eureka:</span></span><br><span class="line">  <span class="attr">instance:</span></span><br><span class="line">    <span class="attr">lease-expiration-duration-in-seconds:</span> <span class="number">90</span></span><br><span class="line">    <span class="attr">lease-renewal-interval-in-seconds:</span> <span class="number">30</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>lease-renewal-interval-in-seconds：服务续约(renew)的间隔，默认为30秒</li>
+<li>lease-expiration-duration-in-seconds：服务失效时间，默认值90秒</li>
+</ul>
+<p>也就是说，默认情况下每个30秒服务会向注册中心发送一次心跳，证明自己还活着。如果超过90秒没有发送心跳，EurekaServer就会认为该服务宕机，会从服务列表中移除，这两个值在生产环境不要修改，默认即可。</p>
+<p>但是在开发时，这个值有点太长了，经常我们关掉一个服务，会发现Eureka依然认为服务在活着。所以我们在开发阶段可以适当调小。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">eureka:</span></span><br><span class="line">  <span class="attr">instance:</span></span><br><span class="line">    <span class="attr">lease-expiration-duration-in-seconds:</span> <span class="number">10</span> <span class="comment"># 10秒即过期</span></span><br><span class="line">    <span class="attr">lease-renewal-interval-in-seconds:</span> <span class="number">5</span> <span class="comment"># 5秒一次心跳</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="5-4-4-服务消费者"><a href="#5-4-4-服务消费者" class="headerlink" title="5.4.4.服务消费者"></a>5.4.4.服务消费者</h3><blockquote>
+<p>获取服务列表</p>
+</blockquote>
+<p>当服务消费者启动时，会检测<code>eureka.client.fetch-registry=true</code>参数的值，如果为true，则会拉取Eureka Server服务的列表只读备份，然后缓存在本地。并且<code>每隔30秒</code>会重新获取并更新数据。我们可以通过下面的参数来修改：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">eureka:</span></span><br><span class="line">  <span class="attr">client:</span></span><br><span class="line">    <span class="attr">registry-fetch-interval-seconds:</span> <span class="number">5</span></span><br></pre></td></tr></table></figure>
+
+<p>生产环境中，我们不需要修改这个值。</p>
+<p>但是为了开发环境下，能够快速得到服务的最新状态，我们可以将其设置小一点。</p>
+<h3 id="5-4-5-失效剔除和自我保护"><a href="#5-4-5-失效剔除和自我保护" class="headerlink" title="5.4.5.失效剔除和自我保护"></a>5.4.5.失效剔除和自我保护</h3><blockquote>
+<p>服务下线</p>
+</blockquote>
+<p>当服务进行正常关闭操作时，它会触发一个服务下线的REST请求给Eureka Server，告诉服务注册中心：“我要下线了”。服务中心接受到请求之后，将该服务置为下线状态。</p>
+<blockquote>
+<p>失效剔除</p>
+</blockquote>
+<p>有些时候，我们的服务提供方并不一定会正常下线，可能因为内存溢出、网络故障等原因导致服务无法正常工作。Eureka Server需要将这样的服务剔除出服务列表。因此它会开启一个定时任务，每隔60秒对所有失效的服务（超过90秒未响应）进行剔除。</p>
+<p>可以通过<code>eureka.server.eviction-interval-timer-in-ms</code>参数对其进行修改，单位是毫秒，生产环境不要修改。</p>
+<p>这个会对我们开发带来极大的不变，你对服务重启，隔了60秒Eureka才反应过来。开发阶段可以适当调整，比如：10秒</p>
+<blockquote>
+<p>自我保护</p>
+</blockquote>
+<p>我们关停一个服务，就会在Eureka面板看到一条警告,</p>
+<p>这是触发了Eureka的自我保护机制。当一个服务未按时进行心跳续约时，Eureka会统计最近15分钟心跳失败的服务实例的比例是否超过了85%。在生产环境下，因为网络延迟等原因，心跳失败实例的比例很有可能超标，但是此时就把服务剔除列表并不妥当，因为服务可能没有宕机。Eureka就会把当前实例的注册信息保护起来，不予剔除。生产环境下这很有效，保证了大多数服务依然可用。</p>
+<p>但是这给我们的开发带来了麻烦， 因此开发阶段我们都会关闭自我保护模式：（itcast-eureka）</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">eureka:</span></span><br><span class="line">  <span class="attr">server:</span></span><br><span class="line">    <span class="attr">enable-self-preservation:</span> <span class="literal">false</span> <span class="comment"># 关闭自我保护模式（缺省为打开）</span></span><br><span class="line">    <span class="attr">eviction-interval-timer-in-ms:</span> <span class="number">1000</span> <span class="comment"># 扫描失效服务的间隔时间（缺省为60*1000ms）</span></span><br></pre></td></tr></table></figure>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/eureka/" rel="tag">eureka</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
     <article id="post-java/java环境配置" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -959,86 +1082,13 @@
 
 </article>
     
-    <article id="post-springmvc/springmvc配置不拦截静态资源" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/05/17/springmvc/springmvc%E9%85%8D%E7%BD%AE%E4%B8%8D%E6%8B%A6%E6%88%AA%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90/"
-    >springmvc配置不拦截静态资源</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/05/17/springmvc/springmvc%E9%85%8D%E7%BD%AE%E4%B8%8D%E6%8B%A6%E6%88%AA%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90/" class="article-date">
-  <time datetime="2020-05-17T07:07:42.000Z" itemprop="datePublished">2020-05-17</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/springmvc/">springmvc</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>DispatcherServlet会拦截到所有的资源，导致一个问题就是静态资源（img、css、js）也会被拦截到，从而<br>不能被使用。解决问题就是需要配置静态资源不进行拦截，在springmvc.xml配置文件添加如下配置<br>1.mvc:resources标签配置不过滤<br>2.location元素表示webapp目录下的包下的所有文件<br>3.mapping元素表示以/static开头的所有请求路径，如/static/a 或者/static/a/b</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 设置静态资源不过滤 --&gt;</span><br><span class="line">&lt;mvc:resources location&#x3D;&quot;&#x2F;css&#x2F;&quot; mapping&#x3D;&quot;&#x2F;css&#x2F;**&quot;&#x2F;&gt; &lt;!-- 样式 --&gt;</span><br><span class="line">&lt;mvc:resources location&#x3D;&quot;&#x2F;images&#x2F;&quot; mapping&#x3D;&quot;&#x2F;images&#x2F;**&quot;&#x2F;&gt; &lt;!-- 图片 --&gt;</span><br><span class="line">&lt;mvc:resources location&#x3D;&quot;&#x2F;js&#x2F;&quot; mapping&#x3D;&quot;&#x2F;js&#x2F;**&quot;&#x2F;&gt; &lt;!-- javascript --&gt;</span><br></pre></td></tr></table></figure>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/springmvc/" rel="tag">springmvc</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
   </article>
   
 
   
   <nav class="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
   </nav>
   
 </section>
