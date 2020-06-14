@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-06-11T03:17:30.684Z</updated>
+  <updated>2020-06-14T00:39:38.264Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>java面向对象的概念</title>
+    <link href="http://yoursite.com/2020/06/14/java/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%A6%82%E5%BF%B5/"/>
+    <id>http://yoursite.com/2020/06/14/java/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%A6%82%E5%BF%B5/</id>
+    <published>2020-06-14T00:37:41.000Z</published>
+    <updated>2020-06-14T00:39:38.264Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;面向对象的概念&quot;&gt;&lt;a href=&quot;#面向对象的概念&quot; class=&quot;headerlink&quot; title=&quot;面向对象的概念&quot;&gt;&lt;/a&gt;面向对象的概念&lt;/h1&gt;&lt;h2 id=&quot;面向对象和面向过程的区别&quot;&gt;&lt;a href=&quot;#面向对象和面向过程的区别&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="java" scheme="http://yoursite.com/categories/java/"/>
+    
+    
+      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+    
+  </entry>
   
   <entry>
     <title>Eureka开发环境配置</title>
@@ -558,34 +585,6 @@
     
     
       <category term="java" scheme="http://yoursite.com/tags/java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>maven引入log4j文件</title>
-    <link href="http://yoursite.com/2020/05/06/maven/maven/"/>
-    <id>http://yoursite.com/2020/05/06/maven/maven/</id>
-    <published>2020-05-06T13:14:29.000Z</published>
-    <updated>2020-05-06T13:20:43.471Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;在maven中使用log4j时还需要引入下面的坐标&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span
-        
-      
-    
-    </summary>
-    
-    
-      <category term="maven" scheme="http://yoursite.com/categories/maven/"/>
-    
-    
-      <category term="maven" scheme="http://yoursite.com/tags/maven/"/>
     
   </entry>
   

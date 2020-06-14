@@ -76,6 +76,297 @@
     
     
     
+    <article id="post-java/面向对象的概念" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/06/14/java/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%A6%82%E5%BF%B5/"
+    >java面向对象的概念</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/06/14/java/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%A6%82%E5%BF%B5/" class="article-date">
+  <time datetime="2020-06-14T00:37:41.000Z" itemprop="datePublished">2020-06-14</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h1 id="面向对象的概念"><a href="#面向对象的概念" class="headerlink" title="面向对象的概念"></a>面向对象的概念</h1><h2 id="面向对象和面向过程的区别"><a href="#面向对象和面向过程的区别" class="headerlink" title="面向对象和面向过程的区别"></a>面向对象和面向过程的区别</h2><ul>
+<li><p>面向过程</p>
+<p>c语言，研究的是怎么做，即how，即具体的实现步骤、实现细节。</p>
+<p>如何把大象装冰箱？</p>
+<p>1.把冰箱门打开</p>
+<p>2.把大象装冰箱</p>
+<p>3.把冰箱门关上</p>
+</li>
+<li><p>面向对象</p>
+<p>研究的是做什么，what.至于怎么做，封装到方法中，方法内部是面向过程..对外只需要提供的一个，别人直接调用，调用者并不考虑细节。</p>
+<p>面向对象编程时实现过程一般是：</p>
+<p>1.创建一个类Person</p>
+<p>2.使用类来创建一个对象 Person person=new Person()</p>
+<p>3.调用对象的方法 person.把大象装冰箱()</p>
+</li>
+</ul>
+<hr>
+<h1 id="面向对象编程思想"><a href="#面向对象编程思想" class="headerlink" title="面向对象编程思想"></a>面向对象编程思想</h1><p>模拟现实世界，一个程序就是一个世界</p>
+<h1 id="类和对象的概念"><a href="#类和对象的概念" class="headerlink" title="类和对象的概念"></a>类和对象的概念</h1><h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><p>对象:模拟显示时间中的具体的事务</p>
+<table>
+<thead>
+<tr>
+<th>现实世界</th>
+<th>编程世界</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>具体的学生</td>
+<td>学生对象</td>
+</tr>
+<tr>
+<td>具体的笔记本</td>
+<td>笔记本对象</td>
+</tr>
+</tbody></table>
+<p>对象有属性和方法</p>
+<p>属性：学生对象的属性,学号，姓名，性别，年龄…</p>
+<p>方法:描述对象的行为，吃饭，睡觉，学习，考试…</p>
+<p>汽车的属性：品牌，型号，排量….</p>
+<p>汽车的行为:前进，后退，刹车，拐弯，刹车，漂移….</p>
+<h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><p>类：相同属性和相同操作(行为)的对象的集合…</p>
+<p>借鉴了现实世界中这种归类的思想，现实世界中把若干学生对象归为一类，统称为学生类，</p>
+<p>编程世界中就有一个学生类。</p>
+<ul>
+<li>类是对象的抽象、是对象的模板，对象是类的实例…</li>
+<li>一个类可以创建多个对象</li>
+</ul>
+<h2 id="面向对象的好处"><a href="#面向对象的好处" class="headerlink" title="面向对象的好处"></a>面向对象的好处</h2><p>面向对象相当于活字印刷,面向过程相当于雕版印刷…</p>
+<p>优点:</p>
+<blockquote>
+<ol>
+<li><p>可复用</p>
+<p>每个活字都是一个可以复用的类..抽象出来，可以重复使用，复用类来创建对象类(活字版)  对象（活字印到纸上的字就是对象）</p>
+</li>
+<li><p>可维护</p>
+<p>只需要修改少量的字，不需要大量的修改，甚至推倒重来…体现了可维护的思想</p>
+</li>
+<li><p>可扩展</p>
+<p>雕版印刷不能加字，活字印刷可以继续添加字 添加功能 体现了可扩展</p>
+</li>
+<li><p>灵活性强</p>
+</li>
+</ol>
+</blockquote>
+<h1 id="对象之间的关系"><a href="#对象之间的关系" class="headerlink" title="对象之间的关系"></a>对象之间的关系</h1><p>现实世界中，事物之间必然有千丝万缕的联系，编程世界中，对象之间也有对应的关系</p>
+<h2 id="一、关联关系"><a href="#一、关联关系" class="headerlink" title="一、关联关系"></a>一、关联关系</h2><p>模拟现实世界中最基本的关系</p>
+<ul>
+<li><p>关联有方向性</p>
+<ul>
+<li><p>单项关联</p>
+<p>我———&gt;学生</p>
+</li>
+<li><p>我———–学生</p>
+</li>
+</ul>
+</li>
+<li><p>关联有多重性</p>
+<ul>
+<li>一对一<ul>
+<li>人和身份证</li>
+</ul>
+</li>
+<li>一对多<ul>
+<li>学院和学生</li>
+</ul>
+</li>
+<li>多对多<ul>
+<li>学生和课程</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="关联关系的两个特例"><a href="#关联关系的两个特例" class="headerlink" title="关联关系的两个特例"></a>关联关系的两个特例</h3><p>聚合和组合是部分和整体之间的关系</p>
+<ul>
+<li>聚合<ul>
+<li>部分可以属于多个整体叫做聚合…  </li>
+<li>学生和球队(一个学生既可以参加篮球队，也可以参加足球队)</li>
+<li>部分和整体声明周期不一致</li>
+<li>在UML图中（统一建模语言，用图来表示，方便程序员沟通、交流），聚合使用空心菱形表示，空心菱形所在位置是整体</li>
+</ul>
+</li>
+<li>组合<ul>
+<li>部分只能属于一个整体</li>
+<li>汽车和发动机，人和四肢、脑袋、身体、部分</li>
+<li>在UML图中使用实心菱形所在的位置表示</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>常见的UML工具：StarUML、rational rose 、visio、在线工具processOn等</p>
+<h2 id="二、继承关系"><a href="#二、继承关系" class="headerlink" title="二、继承关系"></a>二、继承关系</h2><h2 id="三、实现关系"><a href="#三、实现关系" class="headerlink" title="三、实现关系"></a>三、实现关系</h2><h2 id="四、依赖关系"><a href="#四、依赖关系" class="headerlink" title="四、依赖关系"></a>四、依赖关系</h2><p>类B发生了改变，类A跟着变，说明类A依赖于类B</p>
+<h1 id="使用现有类创建对象"><a href="#使用现有类创建对象" class="headerlink" title="使用现有类创建对象"></a>使用现有类创建对象</h1><p>类名 对象名的引用名=new 类名();</p>
+<ul>
+<li>String s1=new String(“Hello World”);</li>
+<li>Integer a =new Integer(1);</li>
+<li>Object o=new Object();</li>
+</ul>
+<p>Object 是java中所有类的父类</p>
+<h2 id="封装性"><a href="#封装性" class="headerlink" title="封装性"></a>封装性</h2><p>面向对象语言的三大特性:</p>
+<ul>
+<li>封装<ul>
+<li>把属性和方法放到类体中叫做封装，封装成一个类</li>
+<li>把若干代码放到方法中，封装成一个方法。</li>
+<li>为了保证属性信息的隐蔽和安全，属性通常加上一个修饰符private</li>
+<li>对于方法而言，要使用public来修饰,方法通常写完以后是想提供给别人使用，为了让别人使用你写好的方法，方法需要使用public来修饰</li>
+</ul>
+</li>
+<li>多态</li>
+<li>继承</li>
+</ul>
+<h2 id="setters和getters方法"><a href="#setters和getters方法" class="headerlink" title="setters和getters方法"></a>setters和getters方法</h2><ul>
+<li><p><strong>setters</strong></p>
+<p>给别人提供修改私有属性的方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWord</span></span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> a;</span><br><span class="line">  <span class="keyword">private</span> String str;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setA</span><span class="params">(<span class="keyword">int</span> a)</span></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.a = a;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setStr</span><span class="params">(String str)</span></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.str = str;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
+<li><p><strong>getters</strong></p>
+<p>给别人提供访问私有属性的方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HiWord</span></span>&#123;</span><br><span class="line">  <span class="keyword">private</span> String str;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">getStr</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAge</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> age;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h2 id="对象的内存模型"><a href="#对象的内存模型" class="headerlink" title="对象的内存模型"></a>对象的内存模型</h2><h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><ul>
+<li><p>定义：一个特殊的函数，也叫作构造方法，英文Constructor，用于为对象的属性进行初始化</p>
+<p>特点：</p>
+<ul>
+<li>与类同名</li>
+<li>没有返回值（返回值的位置连void也不写）</li>
+<li>构造函数可以有多个，构造对象时，会根据参数调用对应的构造函数，这叫做方法的重载</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span></span>&#123;</span><br><span class="line">  <span class="keyword">private</span> String name;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">  <span class="keyword">private</span> String sex;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//不写构造函数时便会自动创建这种形式的默认构造函数</span></span><br><span class="line">    <span class="comment">//当写了任何一个构造函数后，系统便不会再提供默认的构造函数</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">(String name , <span class="keyword">int</span> age )</span></span>&#123;</span><br><span class="line">    thsi.age = age;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">(String name , <span class="keyword">int</span> age ,String sex)</span></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">    <span class="keyword">this</span>.sex = sex;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
+<li><p>构造函数没有返回值的实质</p>
+<p> 构造函数实际上是有返回值的，返回的是刚刚创建的对象的引用</p>
+</li>
+</ul>
+<h2 id="对象初始化块"><a href="#对象初始化块" class="headerlink" title="对象初始化块"></a>对象初始化块</h2><p>作用:和构造函数完全一样的，在构造函数之前执行，可以减少构造函数初始化的冗余问题</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> String sex;</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(<span class="string">"代码块中的初始化"</span>);</span><br><span class="line">        sex=<span class="string">"男"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">(String name)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"一个参数的构造函数"</span>);</span><br><span class="line">        <span class="keyword">this</span>.name=name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"我在吃饭"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestString</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Student student=<span class="keyword">new</span> Student(<span class="string">"faker"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="对象初始化过程的总结"><a href="#对象初始化过程的总结" class="headerlink" title="对象初始化过程的总结"></a>对象初始化过程的总结</h1><blockquote>
+<ol>
+<li><p>为对象的实例分配空间，同时默认初始化</p>
+</li>
+<li><p>声明时初始化和对象初始化块初始化</p>
+<p>按照从上到下写代码的顺序执行</p>
+</li>
+<li><p>构造函数初始化</p>
+</li>
+</ol>
+</blockquote>
+<h2 id="this指针"><a href="#this指针" class="headerlink" title="this指针"></a>this指针</h2><blockquote>
+<p>指向自己的指针(存的就是刚刚创建出来的对象的地址)</p>
+</blockquote>
+<ul>
+<li><p>用在构造函数中</p>
+<p>指向的是正在初始化的对象</p>
+</li>
+<li><p>用在方法中</p>
+<p>指向的是正在调用该方法的对象</p>
+</li>
+<li><p>用在构造函数中</p>
+</li>
+</ul>
+<p>​       调用其他构造函数，注意的是调用其他的构造函数的时候必须写在第一位，不然的话编译器会报错。</p>
+<h1 id="重载"><a href="#重载" class="headerlink" title="重载"></a>重载</h1><blockquote>
+<p>方法名称相同、参数不同的方法之间叫做重载，其中参数不同包括以下三种情况：</p>
+<ul>
+<li>参数的数量不同</li>
+<li>参数的类型不同</li>
+<li>参数的顺序不同</li>
+</ul>
+</blockquote>
+<hr>
+<blockquote>
+<p>仅返回值不同的方法不叫重载方法：</p>
+<p>为什么只有返回值不同的方法不叫重载：</p>
+<ul>
+<li>其实重载的方法之间并没有任何关系，只是碰巧名称相同罢了。</li>
+</ul>
+<p>既然方法名称相同，在使用相同的名称调用方法时，编译器怎么调用哪个方法呢？</p>
+<ul>
+<li><p>考传入参数的不同确定调用哪个方法</p>
+</li>
+<li><p>如果只有返回值不同时，编译会出现Duplicate method错误.编译时认为它是重复的方法。</p>
+</li>
+</ul>
+<p>  重载也叫做静态联编(静态绑定)</p>
+</blockquote>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
     <article id="post-springcloud/Eureka开发环境配置" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -974,83 +1265,6 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id&#x3D;&quot;multipartResolver&quot; class&#x3D;&quot;org.springframework.web.multipart.commons.CommonsMultipartResolver&quot;&gt;</span><br><span class="line">                &lt;!--配置最大上传的文件大小--&gt;</span><br><span class="line">                &lt;property name&#x3D;&quot;maxUploadSize&quot; value&#x3D;&quot;10485670&quot;&gt;&lt;&#x2F;property&gt;</span><br><span class="line">        &lt;&#x2F;bean&gt;</span><br></pre></td></tr></table></figure>
 <p>然后再Controller类的下面写处理,使用MultipartFile来加载文件类</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">@Controller</span><br><span class="line">@RequestMapping(&quot;user&quot;)</span><br><span class="line">public class UserController &#123;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(&quot;fileUpload1&quot;)</span><br><span class="line">    public String fileUpload1(HttpServletRequest request, MultipartFile upload) throws Exception &#123;</span><br><span class="line">        System.out.println(&quot;文件输出&quot;);</span><br><span class="line">        String path &#x3D; request.getSession().getServletContext().getRealPath(&quot;&#x2F;uploads&#x2F;&quot;);</span><br><span class="line">        File file &#x3D; new File(path);</span><br><span class="line">        if (!file.exists()) &#123;</span><br><span class="line">            file.mkdir();</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F;说明上传的是文件项目</span><br><span class="line">        &#x2F;&#x2F;获取到上传文件的传统名称，即原来的名字</span><br><span class="line">        String FileName &#x3D; upload.getOriginalFilename();</span><br><span class="line">        String uuid &#x3D; UUID.randomUUID().toString().replace(&quot;-&quot;, &quot;&quot;);</span><br><span class="line">        &#x2F;&#x2F;写入服务器端</span><br><span class="line">        upload.transferTo(new File(path, uuid + &quot;_&quot; + FileName));</span><br><span class="line">        return &quot;success&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/springmvc/" rel="tag">springmvc</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-springmvc/springmvc之JSON数据前后端转换" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/05/17/springmvc/springmvc%E4%B9%8BJSON%E6%95%B0%E6%8D%AE%E5%89%8D%E5%90%8E%E7%AB%AF%E8%BD%AC%E6%8D%A2/"
-    >springmvc值JSON数据前后端转换</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/05/17/springmvc/springmvc%E4%B9%8BJSON%E6%95%B0%E6%8D%AE%E5%89%8D%E5%90%8E%E7%AB%AF%E8%BD%AC%E6%8D%A2/" class="article-date">
-  <time datetime="2020-05-17T08:22:05.000Z" itemprop="datePublished">2020-05-17</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/springmvc/">springmvc</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>在开发的时候我们常常需要对json数据的前后端进行转换，当我们使用springmvc的注解来开发时就可以减少了我们的工作量。<br>假设我们使用jquery进行一个ajax请求</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  $(function () &#123;</span><br><span class="line">    $(&quot;#btn&quot;).click(function () &#123;</span><br><span class="line">        $.ajax(&#123;</span><br><span class="line">          url:&quot;user&#x2F;testAjax&quot;,</span><br><span class="line">          contentType:&quot;application&#x2F;json;charset&#x3D;UTF-8&quot;,</span><br><span class="line">          data:&#39;&#123;&quot;username&quot;:&quot;呵呵&quot;,&quot;password&quot;:&quot;123456&quot;,&quot;money&quot;:1000&#125;&#39;,</span><br><span class="line">          dataType:&#39;json&#39;,</span><br><span class="line">          type:&quot;post&quot;,</span><br><span class="line">          success:function (data) &#123;</span><br><span class="line">                alert(data.username);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-<p>当我们发送数据时，服务器端可以使用@RequestBody来接受jason数据并且自动转换,并使用@ReponseBody来并返回json数据。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@Controller</span><br><span class="line">@RequestMapping(value &#x3D; &quot;user&quot;)</span><br><span class="line">public class HelloController &#123;</span><br><span class="line">    @RequestMapping(&quot;testAjax&quot;)</span><br><span class="line">    public @ResponseBody User testAjax(@RequestBody User user)</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(user);</span><br><span class="line">        return  user;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>当使用@ResponseBody时我们需要在maven的来引入以下的依赖</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> &lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.fasterxml.jackson.core&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;jackson-databind&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;2.9.0&lt;&#x2F;version&gt;</span><br><span class="line">  &lt;&#x2F;dependency&gt;</span><br><span class="line">  &lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.fasterxml.jackson.core&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;jackson-core&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;2.9.0&lt;&#x2F;version&gt;</span><br><span class="line">  &lt;&#x2F;dependency&gt;</span><br><span class="line">  &lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.fasterxml.jackson.core&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;jackson-annotations&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;2.9.0&lt;&#x2F;version&gt;</span><br><span class="line">  &lt;&#x2F;dependency&gt;</span><br><span class="line">&lt;&#x2F;dependencies&gt;</span><br></pre></td></tr></table></figure>
 
       
       <!-- reward -->
