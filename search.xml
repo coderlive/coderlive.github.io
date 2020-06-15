@@ -1057,4 +1057,98 @@ org.apache.log4j.WriterAppender（将日志信息以流格式发送到任意指�
         <tag>java</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Java包的概念和基本用法</title>
+    <url>/2020/06/15/java/Java%E5%8C%85%E7%9A%84%E6%A6%82%E5%BF%B5%E5%92%8C%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/</url>
+    <content><![CDATA[<h2 id="Java包的概念和基本用法"><a href="#Java包的概念和基本用法" class="headerlink" title="Java包的概念和基本用法"></a>Java包的概念和基本用法</h2><h2 id="包"><a href="#包" class="headerlink" title="包"></a>包</h2><blockquote>
+<p>包：java程序组织文件的一种方式，实质上就是文件夹</p>
+<p>功能：组织大型软件中输入众多的类，不同的类可以放到不同的包中，方便管理</p>
+<ul>
+<li>按项目的功能模块来划分包</li>
+<li>相同名称的类可以放到不同的包中，解决命名冲突的问题</li>
+<li>用package来定义包，要放在代码中的非注释的第一句</li>
+</ul>
+</blockquote>
+<h2 id="JDK中提供导入包的方法"><a href="#JDK中提供导入包的方法" class="headerlink" title="JDK中提供导入包的方法"></a>JDK中提供导入包的方法</h2><h3 id="import"><a href="#import" class="headerlink" title="import"></a>import</h3><blockquote>
+<p>import：导入另一个包中的类</p>
+<ul>
+<li>同一个包中的类不需要导入</li>
+<li>其他包中的类，有两种方式：<ul>
+<li>使用类全名来导入，如：java.util.Data=new Data()</li>
+<li>使用import导入，如:import java.util.Data;</li>
+</ul>
+</li>
+<li>java中默认会自动导入java.lang包</li>
+<li>可以使用通配符导入同一个包中的所有类:<ul>
+<li>import java.util.*  *代表所有的意思</li>
+</ul>
+</li>
+<li>包的导入并不是迭代的，它只会导入这个包所在路径下的所有类，并不会导入它子包的所有类</li>
+</ul>
+</blockquote>
+<h3 id="静态导入"><a href="#静态导入" class="headerlink" title="静态导入"></a>静态导入</h3><p>导入类的静态成员（属性、方法）</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span>  <span class="keyword">static</span> java.lang.Integer.parseInt;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ParseInt</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> a=parseInt(<span class="string">"10"</span>);</span><br><span class="line">        System.out.println(a);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="访问权限修饰符"><a href="#访问权限修饰符" class="headerlink" title="访问权限修饰符"></a>访问权限修饰符</h1><h2 id="修饰类的访问权限修饰符"><a href="#修饰类的访问权限修饰符" class="headerlink" title="修饰类的访问权限修饰符"></a>修饰类的访问权限修饰符</h2><ul>
+<li><p>public</p>
+<p>公有的，在哪里都可以使用</p>
+</li>
+<li><p>什么也不写</p>
+<p>默认的，只能在本包中访问</p>
+</li>
+</ul>
+<h2 id="修饰类的成员的访问权限修饰符"><a href="#修饰类的成员的访问权限修饰符" class="headerlink" title="修饰类的成员的访问权限修饰符"></a>修饰类的成员的访问权限修饰符</h2><p>类的成员:</p>
+<ul>
+<li>属性</li>
+<li>方法</li>
+<li>构造函数</li>
+<li>初始化块</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>修饰符</th>
+<th>本类</th>
+<th>本包</th>
+<th>子类</th>
+<th>任何地方</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>private</td>
+<td>✔</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>default</td>
+<td>✔</td>
+<td>✔</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>protected</td>
+<td>✔</td>
+<td>✔</td>
+<td>✔</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>public</td>
+<td>✔</td>
+<td>✔</td>
+<td>✔</td>
+<td>✔</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
 </search>

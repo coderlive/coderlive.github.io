@@ -76,6 +76,160 @@
     
     
     
+    <article id="post-java/Java包的概念和基本用法" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/06/15/java/Java%E5%8C%85%E7%9A%84%E6%A6%82%E5%BF%B5%E5%92%8C%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/"
+    >Java包的概念和基本用法</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/06/15/java/Java%E5%8C%85%E7%9A%84%E6%A6%82%E5%BF%B5%E5%92%8C%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/" class="article-date">
+  <time datetime="2020-06-15T07:29:43.000Z" itemprop="datePublished">2020-06-15</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h2 id="Java包的概念和基本用法"><a href="#Java包的概念和基本用法" class="headerlink" title="Java包的概念和基本用法"></a>Java包的概念和基本用法</h2><h2 id="包"><a href="#包" class="headerlink" title="包"></a>包</h2><blockquote>
+<p>包：java程序组织文件的一种方式，实质上就是文件夹</p>
+<p>功能：组织大型软件中输入众多的类，不同的类可以放到不同的包中，方便管理</p>
+<ul>
+<li>按项目的功能模块来划分包</li>
+<li>相同名称的类可以放到不同的包中，解决命名冲突的问题</li>
+<li>用package来定义包，要放在代码中的非注释的第一句</li>
+</ul>
+</blockquote>
+<h2 id="JDK中提供导入包的方法"><a href="#JDK中提供导入包的方法" class="headerlink" title="JDK中提供导入包的方法"></a>JDK中提供导入包的方法</h2><h3 id="import"><a href="#import" class="headerlink" title="import"></a>import</h3><blockquote>
+<p>import：导入另一个包中的类</p>
+<ul>
+<li>同一个包中的类不需要导入</li>
+<li>其他包中的类，有两种方式：<ul>
+<li>使用类全名来导入，如：java.util.Data=new Data()</li>
+<li>使用import导入，如:import java.util.Data;</li>
+</ul>
+</li>
+<li>java中默认会自动导入java.lang包</li>
+<li>可以使用通配符导入同一个包中的所有类:<ul>
+<li>import java.util.*  *代表所有的意思</li>
+</ul>
+</li>
+<li>包的导入并不是迭代的，它只会导入这个包所在路径下的所有类，并不会导入它子包的所有类</li>
+</ul>
+</blockquote>
+<h3 id="静态导入"><a href="#静态导入" class="headerlink" title="静态导入"></a>静态导入</h3><p>导入类的静态成员（属性、方法）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span>  <span class="keyword">static</span> java.lang.Integer.parseInt;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ParseInt</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> a=parseInt(<span class="string">"10"</span>);</span><br><span class="line">        System.out.println(a);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="访问权限修饰符"><a href="#访问权限修饰符" class="headerlink" title="访问权限修饰符"></a>访问权限修饰符</h1><h2 id="修饰类的访问权限修饰符"><a href="#修饰类的访问权限修饰符" class="headerlink" title="修饰类的访问权限修饰符"></a>修饰类的访问权限修饰符</h2><ul>
+<li><p>public</p>
+<p>公有的，在哪里都可以使用</p>
+</li>
+<li><p>什么也不写</p>
+<p>默认的，只能在本包中访问</p>
+</li>
+</ul>
+<h2 id="修饰类的成员的访问权限修饰符"><a href="#修饰类的成员的访问权限修饰符" class="headerlink" title="修饰类的成员的访问权限修饰符"></a>修饰类的成员的访问权限修饰符</h2><p>类的成员:</p>
+<ul>
+<li>属性</li>
+<li>方法</li>
+<li>构造函数</li>
+<li>初始化块</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>修饰符</th>
+<th>本类</th>
+<th>本包</th>
+<th>子类</th>
+<th>任何地方</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>private</td>
+<td>✔</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>default</td>
+<td>✔</td>
+<td>✔</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>protected</td>
+<td>✔</td>
+<td>✔</td>
+<td>✔</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>public</td>
+<td>✔</td>
+<td>✔</td>
+<td>✔</td>
+<td>✔</td>
+</tr>
+</tbody></table>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
     <article id="post-java/面向对象的概念" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -1183,89 +1337,6 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">@Controller</span><br><span class="line">@RequestMapping(&quot;user&quot;)</span><br><span class="line">public class UserController &#123;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(&quot;fileUpload1&quot;)</span><br><span class="line">    public String fileUpload1(MultipartFile upload) throws SysExecption&#123;</span><br><span class="line">        &#x2F;&#x2F;模拟异常</span><br><span class="line">        try &#123;</span><br><span class="line">            int a&#x3D;10&#x2F;0;</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            &#x2F;&#x2F;打印异常信息</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            &#x2F;&#x2F;抛出自定义异常信息</span><br><span class="line">            throw new SysExecption(&quot;查询所有用户出现错误&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        return &quot;success&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>最后我们只需要在springmvc.xml配置文件中添加一个bean对象，springmvc会自动的读取整个类并并使用它。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id&#x3D;&quot;sysExeceptionResolver&quot; class&#x3D;&quot;cn.itcast.exeception.SysExeceptionResolver&quot;&gt;&lt;&#x2F;bean&gt;</span><br></pre></td></tr></table></figure>
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/springmvc/" rel="tag">springmvc</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-springmvc/springmvc之文件上传" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/05/17/springmvc/springmvc%E4%B9%8B%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"
-    >springmvc之文件上传</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/05/17/springmvc/springmvc%E4%B9%8B%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" class="article-date">
-  <time datetime="2020-05-17T08:49:12.000Z" itemprop="datePublished">2020-05-17</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/springmvc/">springmvc</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>传统的方式需要修改以下表单的提交格式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action&#x3D;&quot;&#x2F;user&#x2F;fileUpload1&quot; method&#x3D;&quot;post&quot; enctype&#x3D;&quot;multipart&#x2F;form-data&quot;&gt;</span><br><span class="line">        选择文件:&lt;input type&#x3D;&quot;file&quot; name&#x3D;&quot;upload&quot;&gt;</span><br><span class="line">        &lt;input type&#x3D;&quot;submit&quot; value&#x3D;&quot;上传文件&quot;&gt;</span><br><span class="line">&lt;&#x2F;form&gt;</span><br></pre></td></tr></table></figure>
-<p>还要导一下响应的依赖包</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> &lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;commons-fileupload&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;commons-fileupload&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.4&lt;&#x2F;version&gt;</span><br><span class="line">  &lt;&#x2F;dependency&gt;</span><br><span class="line">  &lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;commons-io&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;commons-io&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;2.6&lt;&#x2F;version&gt;</span><br><span class="line">  &lt;&#x2F;dependency&gt;</span><br><span class="line">&lt;&#x2F;dependencies&gt;</span><br></pre></td></tr></table></figure>
-<p>然后再服务器端需要这样写</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">@Controller</span><br><span class="line">@RequestMapping(&quot;user&quot;)</span><br><span class="line">public class UserController &#123;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(&quot;fileUpload1&quot;)</span><br><span class="line">    public String fileUpload1(HttpServletRequest request) throws Exception &#123;</span><br><span class="line">        System.out.println(&quot;文件输出&quot;);</span><br><span class="line">        String path&#x3D;request.getSession().getServletContext().getRealPath(&quot;&#x2F;uploads&#x2F;&quot;);</span><br><span class="line">        File file&#x3D;new File(path);</span><br><span class="line">        if(!file.exists())</span><br><span class="line">        &#123;</span><br><span class="line">            file.mkdir();</span><br><span class="line">        &#125;</span><br><span class="line">        DiskFileItemFactory factory&#x3D;new DiskFileItemFactory();</span><br><span class="line">        ServletFileUpload upload&#x3D;new ServletFileUpload(factory);</span><br><span class="line">        List&lt;FileItem&gt; list&#x3D;upload.parseRequest(request);</span><br><span class="line">        for (FileItem item:list)</span><br><span class="line">        &#123;</span><br><span class="line">            &#x2F;&#x2F;判断当前对象是否是一个上传表单项</span><br><span class="line">            if (item.isFormField())</span><br><span class="line">            &#123;</span><br><span class="line">                &#x2F;&#x2F;说明表单项</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                &#x2F;&#x2F;说明上传的是文件项目</span><br><span class="line">                &#x2F;&#x2F;获取到上传文件的名称</span><br><span class="line">                String FileName&#x3D;item.getName();</span><br><span class="line">                String uuid&#x3D;UUID.randomUUID().toString().replace(&quot;-&quot;,&quot;&quot;);</span><br><span class="line">                &#x2F;&#x2F;写入服务器端</span><br><span class="line">                item.write(new File(path,uuid+&quot;_&quot;+FileName));</span><br><span class="line">                &#x2F;&#x2F;删除临时文件</span><br><span class="line">                item.delete();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(path);</span><br><span class="line">        return &quot;success&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>由于解析文件稍微有些麻烦，所以我决定用springmvc的文件解析器来处理文件的上传方式<br>这个是文件解析器的原理</p>
-<img src="/2020/05/17/springmvc/springmvc%E4%B9%8B%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90%E5%99%A8%E5%8E%9F%E7%90%86.bmp" class="" title="springmvc之文件上传">
-<p>首先我们需要引入一个配置文件,注意：配置文件bean的id是固定的</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id&#x3D;&quot;multipartResolver&quot; class&#x3D;&quot;org.springframework.web.multipart.commons.CommonsMultipartResolver&quot;&gt;</span><br><span class="line">                &lt;!--配置最大上传的文件大小--&gt;</span><br><span class="line">                &lt;property name&#x3D;&quot;maxUploadSize&quot; value&#x3D;&quot;10485670&quot;&gt;&lt;&#x2F;property&gt;</span><br><span class="line">        &lt;&#x2F;bean&gt;</span><br></pre></td></tr></table></figure>
-<p>然后再Controller类的下面写处理,使用MultipartFile来加载文件类</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">@Controller</span><br><span class="line">@RequestMapping(&quot;user&quot;)</span><br><span class="line">public class UserController &#123;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(&quot;fileUpload1&quot;)</span><br><span class="line">    public String fileUpload1(HttpServletRequest request, MultipartFile upload) throws Exception &#123;</span><br><span class="line">        System.out.println(&quot;文件输出&quot;);</span><br><span class="line">        String path &#x3D; request.getSession().getServletContext().getRealPath(&quot;&#x2F;uploads&#x2F;&quot;);</span><br><span class="line">        File file &#x3D; new File(path);</span><br><span class="line">        if (!file.exists()) &#123;</span><br><span class="line">            file.mkdir();</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F;说明上传的是文件项目</span><br><span class="line">        &#x2F;&#x2F;获取到上传文件的传统名称，即原来的名字</span><br><span class="line">        String FileName &#x3D; upload.getOriginalFilename();</span><br><span class="line">        String uuid &#x3D; UUID.randomUUID().toString().replace(&quot;-&quot;, &quot;&quot;);</span><br><span class="line">        &#x2F;&#x2F;写入服务器端</span><br><span class="line">        upload.transferTo(new File(path, uuid + &quot;_&quot; + FileName));</span><br><span class="line">        return &quot;success&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
       
       <!-- reward -->
       
