@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">673</span>
+            <span class="post-count">1.1k</span>
         </span>
     </span>
 
@@ -83,7 +83,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">2 min</span>
+            <span class="post-count">4 min</span>
         </span>
     </span>
 </div>
@@ -119,7 +119,46 @@
 <p>下面程序示范了Lambda表达式的几种简化的写法</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Eatable</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">taste</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Flyable</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">fly</span><span class="params">(String weather)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Addable</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a , <span class="keyword">int</span> b)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LambdaQs</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="comment">// 调用该方法需要Eatable对象</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">(Eatable e)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		System.out.println(e);</span><br><span class="line">		e.taste();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 调用该方法需要Flyable对象</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">drive</span><span class="params">(Flyable f)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"我正在驾驶："</span> + f);</span><br><span class="line">		f.fly(<span class="string">"【碧空如洗的晴日】"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 调用该方法需要Addable对象</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(Addable add)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"5与3的和为："</span> + add.add(<span class="number">5</span>, <span class="number">3</span>));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		LambdaQs lq = <span class="keyword">new</span> LambdaQs();</span><br><span class="line">		<span class="comment">// Lambda表达式的代码块只有一条语句，可以省略花括号。</span></span><br><span class="line">		lq.eat(()-&gt; System.out.println(<span class="string">"苹果的味道不错！"</span>));</span><br><span class="line">		<span class="comment">// Lambda表达式的形参列表只有一个形参，省略圆括号</span></span><br><span class="line">		lq.drive(weather -&gt;</span><br><span class="line">		&#123;</span><br><span class="line">			System.out.println(<span class="string">"今天天气是："</span> + weather);</span><br><span class="line">			System.out.println(<span class="string">"直升机飞行平稳"</span>);</span><br><span class="line">		&#125;);</span><br><span class="line">		<span class="comment">// Lambda表达式的代码块只有一条语句，省略花括号</span></span><br><span class="line">		<span class="comment">// 代码块中只有一条语句，即使该表达式需要返回值，也可以省略return关键字。</span></span><br><span class="line">		lq.test((a , b)-&gt;a + b);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>Lambda表达式简化了内部类需要new className(){}的复杂的写法，使代码变得更加的简洁，因此也受到了程序员们的青睐。Lambda表达式在实际上运行时会被当成一个任意类型的对象，到底当成何种环境，这取决于运行环境的需要。</p>
+<p>Lambda表达式简化了内部类需要new className(){}的复杂的写法，使代码变得更加的简洁，因此也受到了程序员们的青睐。Lambda表达式在实际上运行时会被当成一个任意类型的对象，到底当成何种环境，这取决于运行环境的需要。且使用Lambda表达式时必须要求被代替的匿名内部类只有一个抽象的方法</p>
+<h4 id="Lambda表达式支持方法引用和构造器引用"><a href="#Lambda表达式支持方法引用和构造器引用" class="headerlink" title="Lambda表达式支持方法引用和构造器引用"></a>Lambda表达式支持方法引用和构造器引用</h4><table>
+<thead>
+<tr>
+<th align="center">种类</th>
+<th align="center">示例</th>
+<th align="center">说明</th>
+<th align="center">对应的Lambada表达式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">引用方法类型</td>
+<td align="center">类名::类方法</td>
+<td align="center">函数式接口中被实现方法的全部参数给该类方法作为参数</td>
+<td align="center">(a,b,…)-&gt;类名.类方法(a,b,…)</td>
+</tr>
+<tr>
+<td align="center">引用特定对象的实例方法</td>
+<td align="center">特定对象::实例方法</td>
+<td align="center">函数式接口中被实现方法的全部参数传给该方法作为参数</td>
+<td align="center">(a,b,…)-&gt;特定对象.实例方法</td>
+</tr>
+<tr>
+<td align="center">引用某类对象的实例方法</td>
+<td align="center">类名::实例方法</td>
+<td align="center">函数式接口中被实现方法的第一个参数作为调用者，后面的参数全部传给该方法作为参数</td>
+<td align="center">(a,b,…)-&gt;a.实例方法（b,…）</td>
+</tr>
+<tr>
+<td align="center">引用构造器</td>
+<td align="center">类名::new</td>
+<td align="center">函数式接口中被实现方法的全部参数传给该构造器作为参数</td>
+<td align="center">(a,b,…)-&gt;new 类名(a,b,…)</td>
+</tr>
+</tbody></table>
+<h4 id="Lambda-表达式与匿名内部类主要存在如下区别"><a href="#Lambda-表达式与匿名内部类主要存在如下区别" class="headerlink" title="Lambda 表达式与匿名内部类主要存在如下区别"></a>Lambda 表达式与匿名内部类主要存在如下区别</h4><ul>
+<li>匿名内部类可为任意接口创建实例—-不管接口包含多少个抽象方法，只要匿名内部类实现所有的抽象方法即可：但Lambda表达式只能为函数式接口创建实例。</li>
+<li>匿名内部类可以为抽象类甚至普通类创建实例：但Lambda表达式只能为函数式接口创建实例。</li>
+<li>匿名内部类实现的抽象方法的方法体允许调用接口定义中的默认方法：但Lambda表达式的代码不允许调用接口中定义的默认方法。</li>
+</ul>
 
       
       <!-- reward -->
@@ -191,6 +230,15 @@
   
   
   <nav class="article-nav">
+    
+      <a href="/2020/10/12/%E5%9F%BA%E6%9C%AC%E5%B8%B8%E8%AF%86/%E6%94%AF%E4%BB%98%E5%AE%9D%E6%B2%99%E7%AE%B1%E6%A8%A1%E6%8B%9F%E5%AE%9E%E7%8E%B0%E6%94%AF%E4%BB%98%E5%8A%9F%E8%83%BD/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            支付宝沙箱模拟实现支付功能
+          
+        </div>
+      </a>
     
     
       <a href="/2020/06/17/hello-world/" class="article-nav-link">
